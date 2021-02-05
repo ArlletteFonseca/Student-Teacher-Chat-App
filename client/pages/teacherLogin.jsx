@@ -1,6 +1,14 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 export default function teacherLogin(props) {
+  const history = useHistory();
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const path = './teacherSearch';
+    history.push(path);
+  }
 
   return (
     <div className="container-fluid d-flex flex-column justify-content-center align-items-center ">
@@ -14,7 +22,7 @@ export default function teacherLogin(props) {
           <h4 className="heading">Teacher Login</h4>
         </div>
       </div>
-      <form onSubmit={props.handleSubmit} className=" justify-content-center align-items-center">
+      <form onSubmit={handleSubmit} className=" justify-content-center align-items-center">
         <div className="row  form-group input-row">
           <div className="col">
             <input type="text" placeholder="Enter email" className="input" required/>
@@ -27,7 +35,7 @@ export default function teacherLogin(props) {
             </div>
             <div className="row submit-row">
               <div className="col ">
-            <button onClick={props.handleClick} type="submit">Login </button>
+              <button type="submit">Login</button>
               </div>
             </div>
     </form>
