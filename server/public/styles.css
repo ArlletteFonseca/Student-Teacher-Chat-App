@@ -6,26 +6,29 @@ body {
   text-align: center;
 }
 
-.my-column {
-  /* border: 3px dotted blue; */
-  width: 300px;
+a {
+  display: block;
+  text-align: center;
+  padding-top: 10px;
 }
 
+.link,
 .button {
+  text-decoration: none;
   background-color: #d52349;
-  width: 100%;
-  height: 70px;
   color: white;
   font-size: 1.4rem;
   border-radius: 5px;
   border: 1px solid black;
+  height: 60%;
+  width: 100%;
 }
 
 .input {
   background-color: #faf9f9;
   width: 100%;
   height: 70px;
-  color: white;
+  color: black;
   font-size: 1.4rem;
   border-radius: 5px;
   border: 1px solid #d52349;
@@ -42,6 +45,7 @@ body {
 
 .my-container {
   height: 100vh;
+  text-align: center;
 }
 
 .heading {
@@ -51,10 +55,15 @@ body {
   /* border:1px solid green; */
 }
 
-.btn-row {
+.link-row,
+.input-row,
+.submit-row {
   height: 100px;
+  width: 350px;
 }
 
-.my-row {
-  text-align: center;
-}
+/* @media (min-width: 1200px) {
+    .container{
+        max-width: 970px;
+    }
+} */
