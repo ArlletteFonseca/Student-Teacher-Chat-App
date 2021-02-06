@@ -83,3 +83,8 @@ a {
 .fas {
   color: #d52349;
 }
+
+.name {
+  font-size: 1.3rem;
+  margin: 2px;
+}

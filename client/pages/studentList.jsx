@@ -1,12 +1,26 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-export default function studentList() {
+export default function studentList(props) {
+  const listStudent = props.onChange.map(student =>
+  <ul className="list-group m-2" key={student.studentID}>
+    <li className="list-group-item d-flex justify-content-between align-items-center">
+        <span className="badge bg-secondary badge-pill"><Link to='./amy'></Link></span>
+        <div className= "d-flex justify-content-around align-items-center">
+          <span className="name">{student.firstName}</span> <span className="name">{student.lastName}</span>
+        </div>
+
+    </li>
+      <li className="list-group-item d-flex justify-content-end align-items-center ">
+      {student.gradeLevel}
+    </li>
+</ul>
+
+  );
+
   return (
     <div>
-     <p>Browse by Name</p>
-      <p>Student 1</p>
-      <p>Student 2</p>
-      <p>Student 3</p>
+      {listStudent}
     </div>
   );
 }

@@ -9,7 +9,18 @@ import StudentList from './pages/studentList';
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { };
+    this.state = { student: [] };
+  }
+
+  componentDidMount() {
+    this.getDatabase();
+  }
+
+  getDatabase() {
+    fetch('/api/student')
+      .then(res => res.json())
+      .then(data => this.setState({ student: data }))
+      .catch(error => console.error('Error', error));
   }
 
   render() {
@@ -28,7 +39,9 @@ export default class App extends React.Component {
           <StudentInfo/>
         </Route>
         <Route path='/studentList'>
-          <StudentList/>
+          <StudentList
+            onChange={this.state.student}
+          />
         </Route>
       </div>
     );
