@@ -8,12 +8,26 @@ body {
 
 a {
   display: block;
-  text-align: center;
   padding-top: 10px;
 }
 
-.link,
-.button {
+.my-container {
+  height: 100vh;
+  text-align: center;
+}
+
+.logo {
+  font-size: 3rem;
+  height: 190px;
+}
+
+.heading {
+  height: 100px;
+  font-size: 1.4rem;
+}
+
+.link {
+  text-align: center;
   text-decoration: none;
   background-color: #d52349;
   color: white;
@@ -24,10 +38,16 @@ a {
   width: 100%;
 }
 
+.studentLink {
+  width: 10px;
+
+  /* border: 2px solid #6c757d; */
+}
+
 .input {
   background-color: #faf9f9;
   width: 100%;
-  height: 70px;
+  height: 70%;
   color: black;
   font-size: 1.4rem;
   border-radius: 5px;
@@ -38,23 +58,6 @@ a {
   font-size: 1.5rem;
 }
 
-.logo {
-  font-size: 3rem;
-  height: 190px;
-}
-
-.my-container {
-  height: 100vh;
-  text-align: center;
-}
-
-.heading {
-  height: 100px;
-  font-size: 1.4rem;
-
-  /* border:1px solid green; */
-}
-
 .link-row,
 .input-row,
 .submit-row {
@@ -62,8 +65,36 @@ a {
   width: 350px;
 }
 
-/* @media (min-width: 1200px) {
-    .container{
-        max-width: 970px;
-    }
-} */
+.btn {
+  height: 70%;
+  width: 100%;
+  background-color: #d52349;
+  color: white;
+  font-size: 1.4rem;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+.menu-row {
+  height: 40px;
+  width: 367px;
+  border-top: 1px solid rgb(209, 204, 204);
+}
+
+.line-row {
+  height: 150px;
+  border-bottom: 1px solid black;
+}
+
+.fas {
+  color: #d52349;
+}
+
+.name {
+  font-size: 1.3rem;
+  margin: 2px;
+}
+
+.back {
+  text-align: left;
+}
