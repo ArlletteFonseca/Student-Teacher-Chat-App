@@ -5,6 +5,9 @@ import TeacherLogin from './pages/teacherLogin';
 import TeacherSearch from './pages/teacherSearch';
 import StudentInfo from './pages/studentInfo';
 import StudentList from './pages/studentList';
+import Pattison from './pages/students/pattison';
+import Brown from './pages/students/brown';
+import Grant from './pages/students/grant';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -42,6 +45,15 @@ export default class App extends React.Component {
           <StudentList
             onChange={this.state.student}
           />
+        </Route>
+        <Route path='/pattison'>
+          <Pattison/>
+        </Route>
+        <Route path='/brown'>
+          <Brown/>
+        </Route>
+        <Route path='/grant'>
+          <Grant/>
         </Route>
       </div>
     );
