@@ -1,13 +1,16 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function teacherSearch(props) {
+export default function teacherSearch(props, value) {
+  function handleSubmit(e) {
+    e.preventDefault();
+  }
+
   return (
     <div>
       <div className="container-fluid my-container d-flex flex-column justify-content-center align-items-center ">
-        <div className="row  ">
-          <div className="col ">
+        <div className="row">
+          <div className="col">
             <h1 className="logo">CHAT BOX</h1>
           </div>
         </div>
@@ -16,13 +19,18 @@ export default function teacherSearch(props) {
             <h4 className="heading">Help a Student!</h4>
           </div>
         </div>
-        <form className=" d-flex  flex-column align-items-center justify-content-around mb-5">
-          <div className="row form-group input-row">
-            <div className="col ">
-              <input type="text" placeholder="Search by name" className="input"/>
-        </div>
+        <form onSubmit= {handleSubmit} className=" d-flex  flex-column align-items-center justify-content-around mb-5">
+          <div className="row form-group input-row-search">
+            <div className="col">
+              <input type="text" name="student"value={name.value} placeholder="Search by name" className="input" onChange={props.handleChange}/>
             </div>
-            <div className="row form-group link-row">
+          </div>
+          <div className="row form-group input-row-search">
+            <div className="col">
+              <button type="submit"className="searchBtn">Search</button>
+            </div>
+          </div>
+            <div className="row form-group link-row-search">
               <div className="col ">
                 <Link className="link" to='./studentList'>Browse by Name</Link>
               </div>

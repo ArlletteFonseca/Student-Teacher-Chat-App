@@ -22,7 +22,7 @@ a {
 }
 
 .heading {
-  height: 100px;
+  height: 80px;
   font-size: 1.4rem;
 }
 
@@ -97,4 +97,25 @@ a {
 
 .back {
   text-align: left;
+}
+
+.searchBtn {
+  background-color: #d52349;
+  color: white;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid black;
+  height: 30px;
+}
+
+.link-row-search {
+  height: 100px;
+  width: 350px;
+  padding: 10px;
+  font-size: 1.1rem;
+}
+
+.input-row-search {
+  height: 60px;
+  width: 350px;
 }
