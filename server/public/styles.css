@@ -141,3 +141,36 @@ a {
   border-radius: 5px;
   border: 1px solid #d52349;
 }
+
+.studentCard {
+  width: 200px;
+  height: 400px;
+}
+
+.student-row {
+  width: 250px;
+  height: 200px;
+}
+
+.card {
+  max-width: 400px;
+  max-height: 400px;
+}
+
+.listWidth {
+  max-width: 500px;
+}
+
+.chatBtn {
+  background-color: #d52349;
+  color: white;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  border: 1px solid black;
+  height: 50px;
+  text-decoration: none;
+}
+
+.chatLink {
+  min-width: 375px;
+}
