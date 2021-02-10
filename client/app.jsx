@@ -12,7 +12,8 @@ import Grant from './pages/students/grant';
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { student: [] };
+    this.state = { student: [], studentName: null };
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -26,6 +27,10 @@ export default class App extends React.Component {
       .catch(error => console.error('Error', error));
   }
 
+  handleChange(event) {
+    this.setState({ studentName: event.target.value });
+  }
+
   render() {
     return (
       <div>
@@ -36,7 +41,11 @@ export default class App extends React.Component {
           <TeacherLogin/>
         </Route>
         <Route path='/teacherSearch'>
-          <TeacherSearch/>
+          <TeacherSearch
+            value={this.state.studentName}
+            onChange={this.handleChange}
+            onClick={this.handleClick}
+          />
         </Route>
         <Route path='/studentInfo'>
           <StudentInfo/>

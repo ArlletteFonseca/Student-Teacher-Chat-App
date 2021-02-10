@@ -1,13 +1,41 @@
-
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 export default function teacherSearch(props) {
+  const history = useHistory();
+
+  function handleSubmit(e) {
+    e.preventDefault();
+  }
+
+  // function handleClick(e) {
+  //   e.preventDefault(e);
+  //   if (props.value === 'hello') {
+  //     const path = './studentList';
+  //     history.push(path);
+  //   }
+
+  function handleClick(e) {
+    e.preventDefault(e);
+    const lowercaseName = props.value.toLowerCase();
+    if (lowercaseName.includes('brown') || lowercaseName.includes('michael')) {
+      const path = './brown';
+      history.push(path);
+    } else if (lowercaseName.includes('amy') || lowercaseName.includes('pattison')) {
+      const path = './pattison';
+      history.push(path);
+    } else if (lowercaseName.includes('josh') || lowercaseName.includes('grant')) {
+      const path = './grant';
+      history.push(path);
+    }
+
+  }
+
   return (
     <div>
       <div className="container-fluid my-container d-flex flex-column justify-content-center align-items-center ">
-        <div className="row  ">
-          <div className="col ">
+        <div className="row">
+          <div className="col">
             <h1 className="logo">CHAT BOX</h1>
           </div>
         </div>
@@ -16,15 +44,20 @@ export default function teacherSearch(props) {
             <h4 className="heading">Help a Student!</h4>
           </div>
         </div>
-        <form className=" d-flex  flex-column align-items-center justify-content-around mb-5">
-          <div className="row form-group input-row">
-            <div className="col ">
-              <input type="text" placeholder="Search by name" className="input"/>
-        </div>
+        <form onSubmit={handleSubmit} className=" d-flex  flex-column align-items-center justify-content-around mb-5">
+          <div className="row form-group input-row-search">
+            <div className="col">
+              <input type="text" onChange={props.onChange}name="studentName" placeholder="Search by name" className="inputSearch"/>
             </div>
-            <div className="row form-group link-row">
+          </div>
+          <div className="row form-group input-row-search">
+            <div className="col">
+              <button onClick={handleClick} type="submit"className="searchBtn">Search</button>
+            </div>
+          </div>
+            <div className="row form-group link-row-search">
               <div className="col ">
-                <Link className="link" to='./studentList'>Browse by Name</Link>
+                <Link className="linkSearch" to='./studentList'>Browse by Name</Link>
               </div>
             </div>
     </form>
