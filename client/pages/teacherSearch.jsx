@@ -8,13 +8,6 @@ export default function teacherSearch(props) {
     e.preventDefault();
   }
 
-  // function handleClick(e) {
-  //   e.preventDefault(e);
-  //   if (props.value === 'hello') {
-  //     const path = './studentList';
-  //     history.push(path);
-  //   }
-
   function handleClick(e) {
     e.preventDefault(e);
     const lowercaseName = props.value.toLowerCase();

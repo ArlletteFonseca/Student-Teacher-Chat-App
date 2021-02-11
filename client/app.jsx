@@ -3,11 +3,11 @@ import Home from './pages/home';
 import { Route } from 'react-router-dom';
 import TeacherLogin from './pages/teacherLogin';
 import TeacherSearch from './pages/teacherSearch';
-import StudentInfo from './pages/studentInfo';
 import StudentList from './pages/studentList';
 import Pattison from './pages/students/pattison';
 import Brown from './pages/students/brown';
 import Grant from './pages/students/grant';
+import ChatScreen from './pages/chatScreen';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -47,9 +47,6 @@ export default class App extends React.Component {
             onClick={this.handleClick}
           />
         </Route>
-        <Route path='/studentInfo'>
-          <StudentInfo/>
-        </Route>
         <Route path='/studentList'>
           <StudentList
             onChange={this.state.student}
@@ -64,6 +61,10 @@ export default class App extends React.Component {
         <Route path='/grant'>
           <Grant/>
         </Route>
+        <Route path='/chatScreen'>
+          <ChatScreen/>
+        </Route>
+
       </div>
     );
   }
