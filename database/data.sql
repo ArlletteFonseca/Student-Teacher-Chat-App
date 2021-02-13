@@ -17,3 +17,4 @@ insert into teacher
    ('Jack', 'Hosea', 'English', 'eng', 'jack@college.edu');
 
 
+

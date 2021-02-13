@@ -1,9 +1,6 @@
+/* Universal Styling */
 body {
   margin: 30px;
-}
-
-::placeholder {
-  text-align: center;
 }
 
 a {
@@ -11,51 +8,55 @@ a {
   padding-top: 10px;
 }
 
+::placeholder {
+  text-align: center;
+}
+
 .my-container {
   height: 100vh;
   text-align: center;
 }
 
+/* App logo */
 .logo {
   font-size: 3rem;
   height: 190px;
 }
 
+/* app heading */
 .heading {
   height: 80px;
   font-size: 1.4rem;
 }
 
+/* Router link buttons */
 .link {
   text-align: center;
   text-decoration: none;
   background-color: #d52349;
   color: white;
   font-size: 1.4rem;
-  border-radius: 5px;
-  border: 1px solid black;
+  border-radius: 2rem;
   height: 60%;
   width: 100%;
 }
 
 .studentLink {
   width: 10px;
-
-  /* border: 2px solid #6c757d; */
-}
-
-.input {
-  background-color: #faf9f9;
-  width: 100%;
-  height: 60%;
-  color: black;
-  font-size: 1.4rem;
-  border-radius: 5px;
-  border: 1px solid #d52349;
 }
 
 .label {
   font-size: 1.5rem;
+}
+
+.input {
+  padding: 0 1rem;
+  border-radius: 2rem;
+  margin: 0.25rem;
+  border: 1px rgb(231, 224, 224) solid;
+  width: 100%;
+  height: 60%;
+  font-size: 1.4rem;
 }
 
 .link-row,
@@ -65,14 +66,14 @@ a {
   width: 350px;
 }
 
+/* submit button */
 .btn {
   height: 60%;
   width: 100%;
   background-color: #d52349;
   color: white;
   font-size: 1.4rem;
-  border-radius: 5px;
-  border: 1px solid black;
+  border-radius: 2rem;
 }
 
 .menu-row {
@@ -86,6 +87,7 @@ a {
   border-bottom: 1px solid black;
 }
 
+/* font awesome */
 .fas {
   color: #d52349;
 }
@@ -99,15 +101,19 @@ a {
   text-align: left;
 }
 
-.searchBtn {
+.searchBtn,
+.chatBtn {
   background-color: #d52349;
   color: white;
   font-size: 1rem;
-  border-radius: 5px;
-  border: 1px solid black;
-  height: 40px;
+  border-radius: 2rem;
+  height: 45px;
+  width: 100px;
+  margin-top: 10px;
+  text-decoration: none;
 }
 
+/* search page/ browse page styling */
 .link-row-search {
   height: 100px;
   width: 350px;
@@ -126,9 +132,8 @@ a {
   background-color: #d52349;
   color: white;
   font-size: 1.4rem;
-  border-radius: 5px;
-  border: 1px solid black;
-  height: 70%;
+  border-radius: 2rem;
+  height: 65%;
   width: 100%;
 }
 
@@ -138,10 +143,11 @@ a {
   height: 90%;
   color: black;
   font-size: 1.4rem;
-  border-radius: 5px;
-  border: 1px solid #d52349;
+  border-radius: 2rem;
+  border: 1px rgb(231, 224, 224) solid;
 }
 
+/* student info page */
 .studentCard {
   width: 200px;
   height: 400px;
@@ -153,7 +159,7 @@ a {
 }
 
 .card {
-  max-width: 400px;
+  max-width: 350px;
   max-height: 400px;
 }
 
@@ -161,16 +167,56 @@ a {
   max-width: 500px;
 }
 
-.chatBtn {
-  background-color: #d52349;
-  color: white;
-  font-size: 1.2rem;
-  border-radius: 5px;
-  border: 1px solid black;
-  height: 50px;
-  text-decoration: none;
+.chatLink {
+  min-width: 350px;
 }
 
-.chatLink {
-  min-width: 375px;
+/* Chat Page */
+.chatBubble {
+  border: 1px rgb(201, 196, 196) solid;
+  border-radius: 10px;
+}
+
+.red {
+  background-color: rgb(177, 127, 127);
+}
+
+.chatContainer,
+.cardContainer {
+  height: 100vh;
+  max-width: 400px;
+  border: none;
+}
+
+.chatBox {
+  height: 100px;
+  max-width: 400px;
+  border: 1px gray solid;
+  border-radius: 10px;
+}
+
+.green {
+  color: green;
+}
+
+.messages {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 70%;
+}
+
+.chat {
+  height: 50px;
+  width: 330px;
+}
+
+.chatInput {
+  padding: 0 1rem;
+  border-radius: 2rem;
+  margin: 0.25rem;
+  border: 1px rgb(231, 224, 224) solid;
+  width: 80%;
+  height: 60%;
+  font-size: 1.4rem;
 }

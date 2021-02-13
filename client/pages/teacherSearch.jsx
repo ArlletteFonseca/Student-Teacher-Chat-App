@@ -4,17 +4,6 @@ import { Link, useHistory } from 'react-router-dom';
 export default function teacherSearch(props) {
   const history = useHistory();
 
-  function handleSubmit(e) {
-    e.preventDefault();
-  }
-
-  // function handleClick(e) {
-  //   e.preventDefault(e);
-  //   if (props.value === 'hello') {
-  //     const path = './studentList';
-  //     history.push(path);
-  //   }
-
   function handleClick(e) {
     e.preventDefault(e);
     const lowercaseName = props.value.toLowerCase();
@@ -44,7 +33,7 @@ export default function teacherSearch(props) {
             <h4 className="heading">Help a Student!</h4>
           </div>
         </div>
-        <form onSubmit={handleSubmit} className=" d-flex  flex-column align-items-center justify-content-around mb-5">
+        <form className=" d-flex  flex-column align-items-center justify-content-around mb-5">
           <div className="row form-group input-row-search">
             <div className="col">
               <input type="text" onChange={props.onChange}name="studentName" placeholder="Search by name" className="inputSearch"/>
