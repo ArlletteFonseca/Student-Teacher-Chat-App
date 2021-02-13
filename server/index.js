@@ -16,6 +16,13 @@ const server = http.createServer(app);
 const io = socketio(server);
 io.on('connection', socket => {
   console.log('a user connected..');
+  socket.on('disconnect', () => {
+    console.log('user disconnected');
+  });
+  socket.on('chat message', msg => {
+    io.emit('chat message', msg);
+    console.log('message: ' + msg);
+  });
 });
 
 // getting database
@@ -38,6 +45,29 @@ app.get('/api/student/', (req, res, next) => {
       });
     });
 });
+
+app.get('/api/messages/', (req, res, next) => {
+  const sql = `SELECT *
+                   FROM "messages"`;
+  db.query(sql)
+    .then(result => {
+      const message = result.rows;
+      if (message.length > 0) {
+        res.status(200).json(message);
+      } else {
+        res.status(404).json([]);
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'An unexpected error occured, cannot query database'
+      });
+    });
+});
+
+// posting messages
+
 // set static folder
 app.use(staticMiddleware);
 

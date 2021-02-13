@@ -8,7 +8,14 @@ import Pattison from './pages/students/pattison';
 import Brown from './pages/students/brown';
 import Grant from './pages/students/grant';
 import ChatScreen from './pages/chatScreen';
-import io from 'socket.io-client';
+import { io } from 'socket.io-client';
+const connectionOptions = {
+  reconnection: true,
+  reconnectionAttempts: 'Infinity',
+  timeout: 20000,
+  transports: ['websocket']
+};
+const socket = io('http://192.168.1.47:3001', connectionOptions);
 
 export default class App extends React.Component {
   constructor(props) {
@@ -16,7 +23,7 @@ export default class App extends React.Component {
     this.state = {
       student: [],
       studentName: null,
-      message: ' ',
+      message: [],
       teacherId: null,
       studentId: null,
       setResponse: ' '
@@ -27,7 +34,8 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getDatabase();
+    this.getStudents();
+    this.getMessages();
     const connectionOptions = {
       reconnection: true,
       reconnectionAttempts: 'Infinity',
@@ -37,26 +45,36 @@ export default class App extends React.Component {
     io('http://192.168.1.47:3001', connectionOptions);
   }
 
-  getDatabase() {
+  getStudents() {
     fetch('/api/student')
       .then(res => res.json())
       .then(data => this.setState({ student: data }))
       .catch(error => console.error('Error', error));
   }
 
+  getMessages() {
+    fetch('/api/messages')
+      .then(res => res.json())
+      .then(data => this.setState({ message: data }))
+      .catch(error => console.error('Error', error));
+  }
+  // bind
+
   handleChange(event) {
     this.setState({ studentName: event.target.value });
+    event.target.value = '';
   }
 
   handleMessage(event) {
     this.setState({ message: event.target.value });
-    // eslint-disable-next-line no-console
-    console.log(event.target.value);
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    this.setState({ message: ' ' });
+    if (this.state.message) {
+      socket.emit('chat message', this.state.message);
+    }
+    e.target.reset();
   }
 
   render() {
@@ -72,7 +90,7 @@ export default class App extends React.Component {
           <TeacherSearch
             value={this.state.studentName}
             onChange={this.handleChange}
-            onClick={this.handleClick}
+            // onClick={this.handleClick}
           />
         </Route>
         <Route path='/studentList'>
@@ -93,7 +111,7 @@ export default class App extends React.Component {
           <ChatScreen
             onChange={this.handleMessage}
             onSubmit= {this.handleSubmit}
-
+            newMessage={this.state.message}
           />
         </Route>
 
