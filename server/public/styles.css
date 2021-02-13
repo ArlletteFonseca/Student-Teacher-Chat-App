@@ -203,4 +203,20 @@ a {
   list-style: none;
   margin: 0;
   padding: 0;
+  height: 70%;
+}
+
+.chat {
+  height: 50px;
+  width: 330px;
+}
+
+.chatInput {
+  padding: 0 1rem;
+  border-radius: 2rem;
+  margin: 0.25rem;
+  border: 1px rgb(231, 224, 224) solid;
+  width: 80%;
+  height: 60%;
+  font-size: 1.4rem;
 }

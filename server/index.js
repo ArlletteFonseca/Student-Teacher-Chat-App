@@ -1,12 +1,24 @@
+/* eslint-disable no-console */
 require('dotenv/config');
-const express = require('express');
+
 const staticMiddleware = require('./static-middleware');
-const app = express();
+
 const pg = require('pg');
 const db = new pg.Pool({
   connectionString: 'postgres://dev:lfz@localhost/school'
 });
 
+const http = require('http');
+const express = require('express');
+const socketio = require('socket.io');
+const app = express();
+const server = http.createServer(app);
+const io = socketio(server);
+io.on('connection', socket => {
+  console.log('a user connected..');
+});
+
+// getting database
 app.get('/api/student/', (req, res, next) => {
   const sql = `SELECT *
                    FROM "student"`;
@@ -26,10 +38,14 @@ app.get('/api/student/', (req, res, next) => {
       });
     });
 });
-
+// set static folder
 app.use(staticMiddleware);
 
-app.listen(process.env.PORT, () => {
+// server.listen(process.env.PORT, () => {
+//   // eslint-disable-next-line no-console
+//   console.log(`express server listening on port ${process.env.PORT}`);
+
+server.listen(3001, () => {
   // eslint-disable-next-line no-console
-  console.log(`express server listening on port ${process.env.PORT}`);
+  console.log('express server listening on port 3001');
 });
