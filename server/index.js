@@ -45,6 +45,7 @@ app.get('/api/student/', (req, res, next) => {
       });
     });
 });
+// Get messages
 
 app.get('/api/messages/', (req, res, next) => {
   const sql = `SELECT *

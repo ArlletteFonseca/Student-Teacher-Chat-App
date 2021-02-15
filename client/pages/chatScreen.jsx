@@ -5,7 +5,7 @@ export default function chatScreen(props) {
 
   const listMessages = props.newMessage.map(msg =>
       <ul key={msg.chatID}>
-        <li >{msg.message}</li>
+        <li className="messageBox">{msg.message}</li>
       </ul>
   );
 
@@ -17,7 +17,6 @@ export default function chatScreen(props) {
           {listMessages}
         </div>
         <form onSubmit={props.onSubmit} id="form" className="form" action="">
-
           <div className="col p-0 d-flex justify-content-around align-items-end chat">
               <input id="input" className="chatInput" onChange={props.onChange} />
             <button className="btn-success">Send</button>

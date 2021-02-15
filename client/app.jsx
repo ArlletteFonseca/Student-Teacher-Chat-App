@@ -62,19 +62,20 @@ export default class App extends React.Component {
 
   handleChange(event) {
     this.setState({ studentName: event.target.value });
-    event.target.value = '';
+
   }
 
   handleMessage(event) {
     this.setState({ message: event.target.value });
+
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
+  handleSubmit(event) {
+    event.preventDefault();
     if (this.state.message) {
       socket.emit('chat message', this.state.message);
     }
-    e.target.reset();
+    event.target.reset();
   }
 
   render() {
@@ -90,7 +91,7 @@ export default class App extends React.Component {
           <TeacherSearch
             value={this.state.studentName}
             onChange={this.handleChange}
-            // onClick={this.handleClick}
+            onClick={this.handleClick}
           />
         </Route>
         <Route path='/studentList'>
