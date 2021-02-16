@@ -8,7 +8,14 @@ import Pattison from './pages/students/pattison';
 import Brown from './pages/students/brown';
 import Grant from './pages/students/grant';
 import ChatScreen from './pages/chatScreen';
-import io from 'socket.io-client';
+import { io } from 'socket.io-client';
+const connectionOptions = {
+  reconnection: true,
+  reconnectionAttempts: 'Infinity',
+  timeout: 20000,
+  transports: ['websocket']
+};
+const socket = io('http://192.168.1.47:3001', connectionOptions);
 
 export default class App extends React.Component {
   constructor(props) {
@@ -16,10 +23,12 @@ export default class App extends React.Component {
     this.state = {
       student: [],
       studentName: null,
-      message: ' ',
+      messageToSend: '',
       teacherId: null,
       studentId: null,
-      setResponse: ' '
+      setResponse: ' ',
+      recvMessages: [],
+      oldMessages: []
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleMessage = this.handleMessage.bind(this);
@@ -27,7 +36,8 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getDatabase();
+    this.getStudents();
+    // this.getMessages();
     const connectionOptions = {
       reconnection: true,
       reconnectionAttempts: 'Infinity',
@@ -35,28 +45,43 @@ export default class App extends React.Component {
       transports: ['websocket']
     };
     io('http://192.168.1.47:3001', connectionOptions);
+    socket.on('message', message => {
+      this.setState({ recvMessages: [...this.state.recvMessages, message] });
+    });
+
   }
 
-  getDatabase() {
+  getStudents() {
     fetch('/api/student')
       .then(res => res.json())
       .then(data => this.setState({ student: data }))
       .catch(error => console.error('Error', error));
   }
 
+  // getMessages() {
+  //   fetch('/api/messages')
+  //     .then(res => res.json())
+  //     .then(data => this.setState({ message: data }))
+  //     .catch(error => console.error('Error', error));
+  // }
+  // bind
+
   handleChange(event) {
     this.setState({ studentName: event.target.value });
+
   }
 
   handleMessage(event) {
-    this.setState({ message: event.target.value });
-    // eslint-disable-next-line no-console
-    console.log(event.target.value);
+    event.preventDefault();
+    this.setState({ messageToSend: event.target.value });
+
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
-    this.setState({ message: ' ' });
+  handleSubmit(event) {
+    event.preventDefault();
+    socket.emit('chat message', this.state.messageToSend);
+
+    event.target.reset();
   }
 
   render() {
@@ -93,7 +118,8 @@ export default class App extends React.Component {
           <ChatScreen
             onChange={this.handleMessage}
             onSubmit= {this.handleSubmit}
-
+            newMessage={this.state.messageToSend}
+            recvMessages = {this.state.recvMessages}
           />
         </Route>
 

@@ -14,8 +14,22 @@ const socketio = require('socket.io');
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
+
+//  Run when client connects
 io.on('connection', socket => {
-  console.log('a user connected..');
+  // Broadcast when a user connects
+  socket.broadcast.emit('message', 'A user has joined the chat');
+  // Runs when client disconnects
+  socket.on('disconnect', () => {
+    io.emit('message', 'A user has left the chat');
+  });
+
+  // prints out Chat message event
+  socket.on('chat message', msg => {
+    console.log(msg);
+    io.emit('message', msg);
+  });
+
 });
 
 // getting database
@@ -38,6 +52,30 @@ app.get('/api/student/', (req, res, next) => {
       });
     });
 });
+// Get messages
+
+app.get('/api/messages/', (req, res, next) => {
+  const sql = `SELECT *
+                   FROM "messages"`;
+  db.query(sql)
+    .then(result => {
+      const message = result.rows;
+      if (message.length > 0) {
+        res.status(200).json(message);
+      } else {
+        res.status(404).json([]);
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'An unexpected error occured, cannot query database'
+      });
+    });
+});
+
+// posting messages
+
 // set static folder
 app.use(staticMiddleware);
 

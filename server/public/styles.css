@@ -220,3 +220,7 @@ a {
   height: 60%;
   font-size: 1.4rem;
 }
+
+.messageBox {
+  list-style-type: none;
+}
