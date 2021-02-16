@@ -23,10 +23,12 @@ export default class App extends React.Component {
     this.state = {
       student: [],
       studentName: null,
-      message: [],
+      messageToSend: '',
       teacherId: null,
       studentId: null,
-      setResponse: ' '
+      setResponse: ' ',
+      recvMessages: [],
+      oldMessages: []
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleMessage = this.handleMessage.bind(this);
@@ -35,7 +37,7 @@ export default class App extends React.Component {
 
   componentDidMount() {
     this.getStudents();
-    this.getMessages();
+    // this.getMessages();
     const connectionOptions = {
       reconnection: true,
       reconnectionAttempts: 'Infinity',
@@ -43,6 +45,10 @@ export default class App extends React.Component {
       transports: ['websocket']
     };
     io('http://192.168.1.47:3001', connectionOptions);
+    socket.on('message', message => {
+      this.setState({ recvMessages: [...this.state.recvMessages, message] });
+    });
+
   }
 
   getStudents() {
@@ -52,12 +58,12 @@ export default class App extends React.Component {
       .catch(error => console.error('Error', error));
   }
 
-  getMessages() {
-    fetch('/api/messages')
-      .then(res => res.json())
-      .then(data => this.setState({ message: data }))
-      .catch(error => console.error('Error', error));
-  }
+  // getMessages() {
+  //   fetch('/api/messages')
+  //     .then(res => res.json())
+  //     .then(data => this.setState({ message: data }))
+  //     .catch(error => console.error('Error', error));
+  // }
   // bind
 
   handleChange(event) {
@@ -66,15 +72,15 @@ export default class App extends React.Component {
   }
 
   handleMessage(event) {
-    this.setState({ message: event.target.value });
+    event.preventDefault();
+    this.setState({ messageToSend: event.target.value });
 
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    if (this.state.message) {
-      socket.emit('chat message', this.state.message);
-    }
+    socket.emit('chat message', this.state.messageToSend);
+
     event.target.reset();
   }
 
@@ -112,7 +118,8 @@ export default class App extends React.Component {
           <ChatScreen
             onChange={this.handleMessage}
             onSubmit= {this.handleSubmit}
-            newMessage={this.state.message}
+            newMessage={this.state.messageToSend}
+            recvMessages = {this.state.recvMessages}
           />
         </Route>
 

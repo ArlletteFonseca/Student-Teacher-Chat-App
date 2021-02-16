@@ -14,15 +14,22 @@ const socketio = require('socket.io');
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
+
+//  Run when client connects
 io.on('connection', socket => {
-  console.log('a user connected..');
+  // Broadcast when a user connects
+  socket.broadcast.emit('message', 'A user has joined the chat');
+  // Runs when client disconnects
   socket.on('disconnect', () => {
-    console.log('user disconnected');
+    io.emit('message', 'A user has left the chat');
   });
+
+  // prints out Chat message event
   socket.on('chat message', msg => {
-    io.emit('chat message', msg);
-    console.log('message: ' + msg);
+    console.log(msg);
+    io.emit('message', msg);
   });
+
 });
 
 // getting database
