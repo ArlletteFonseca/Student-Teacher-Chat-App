@@ -9,6 +9,7 @@ import Brown from './pages/students/brown';
 import Grant from './pages/students/grant';
 import ChatScreen from './pages/chatScreen';
 import { io } from 'socket.io-client';
+
 const connectionOptions = {
   reconnection: true,
   reconnectionAttempts: 'Infinity',
@@ -37,7 +38,7 @@ export default class App extends React.Component {
 
   componentDidMount() {
     this.getStudents();
-    // this.getMessages();
+    this.getMessages();
     const connectionOptions = {
       reconnection: true,
       reconnectionAttempts: 'Infinity',
@@ -58,12 +59,12 @@ export default class App extends React.Component {
       .catch(error => console.error('Error', error));
   }
 
-  // getMessages() {
-  //   fetch('/api/messages')
-  //     .then(res => res.json())
-  //     .then(data => this.setState({ message: data }))
-  //     .catch(error => console.error('Error', error));
-  // }
+  getMessages() {
+    fetch('/api/messages')
+      .then(res => res.json())
+      .then(data => this.setState({ oldMessages: data }))
+      .catch(error => console.error('Error', error));
+  }
   // bind
 
   handleChange(event) {
@@ -120,6 +121,7 @@ export default class App extends React.Component {
             onSubmit= {this.handleSubmit}
             newMessage={this.state.messageToSend}
             recvMessages = {this.state.recvMessages}
+            oldMessages = {this.state.oldMessages}
           />
         </Route>
 

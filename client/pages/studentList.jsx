@@ -20,9 +20,9 @@ export default function studentList(props) {
   );
 
   return (
-    <div>
-      <Link to='./teacherSearch'><i className="fas fa-chevron-left fa-2x back"></i></Link>
-      <p className="m-2">Select Student</p>
+    <div className="container-fluid my-container d-flex flex-column align-items-center  ">
+      <Link to='./teacherSearch' className="arrowWidth"><i className="fas fa-chevron-left fa-2x back arrowWidth"></i></Link>
+      <p className="m-2 arrowWidth">Select Student</p>
         {listStudent}
     </div>
   );
