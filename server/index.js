@@ -18,10 +18,10 @@ const io = socketio(server);
 //  Run when client connects
 io.on('connection', socket => {
   // Broadcast when a user connects
-  socket.broadcast.emit('message', 'A user has joined the chat');
+  // socket.broadcast.emit('message', 'A user has joined the chat');
   // Runs when client disconnects
   socket.on('disconnect', () => {
-    io.emit('message', 'A user has left the chat');
+    // io.emit('message', 'A user has left the chat');
   });
 
   // prints out Chat message event

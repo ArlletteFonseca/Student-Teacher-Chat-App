@@ -165,20 +165,11 @@ a {
 
 .listWidth {
   max-width: 500px;
+  width: 350px;
 }
 
 .chatLink {
   min-width: 350px;
-}
-
-/* Chat Page */
-.chatBubble {
-  border: 1px rgb(201, 196, 196) solid;
-  border-radius: 10px;
-}
-
-.red {
-  background-color: rgb(177, 127, 127);
 }
 
 .chatContainer,
@@ -188,27 +179,8 @@ a {
   border: none;
 }
 
-.chatBox {
-  height: 100px;
-  max-width: 400px;
-  border: 1px gray solid;
-  border-radius: 10px;
-}
-
 .green {
   color: green;
-}
-
-.messages {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  height: 70%;
-}
-
-.chat {
-  height: 50px;
-  width: 330px;
 }
 
 .chatInput {
@@ -217,10 +189,19 @@ a {
   margin: 0.25rem;
   border: 1px rgb(231, 224, 224) solid;
   width: 80%;
-  height: 60%;
+  height: 80%;
   font-size: 1.4rem;
 }
 
-.messageBox {
-  list-style-type: none;
+.fixed {
+  position: fixed;
+  bottom: 0;
+  z-index: 3000;
+  background-color: gray;
+  height: 50px;
+  width: 375px;
+}
+
+.arrowWidth {
+  width: 350px;
 }

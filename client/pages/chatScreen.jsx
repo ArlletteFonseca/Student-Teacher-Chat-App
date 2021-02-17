@@ -2,35 +2,29 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export default function chatScreen(props) {
+  const listMessages = props.oldMessages.map(msg =>
 
-  // const listMessages = props.newMessage.map(msg =>
-  //     <ul key={msg.chatID}>
-  //       <li className="messageBox">{msg.message}</li>
-  //     </ul>
-  // );
+    <ul key={msg.chatID} className="list-group m-2 listWidth">
+      <li className="list-group-item d-flex justify-content-between align-items-center">{msg.message}</li>
+      </ul>
+  );
 
   const textOfRecvMessages = props.recvMessages.map((msg, chatID) =>
-    <ul key={chatID}>
-      <li className="messageBox">{msg}</li>
+    <ul key={chatID} className="list-group m-2 listWidth">
+      <li className="list-group-item d-flex justify-content-between align-items-center">{msg}</li>
     </ul>
   );
 
   return (
-    <div className="chatContainer container-fluid d-flex flex-column justify-content-between">
-      <Link to='./teacherSearch'><i className="fas fa-chevron-left fa-2x back"></i></Link>
-      <div className="chatContainer d-flex flex-column justify-content-around">
-        <div>
-          {textOfRecvMessages}
-        </div>
-        <form onSubmit={props.onSubmit} id="form" className="form" action="">
-          <div className="col p-0 d-flex justify-content-around align-items-end chat">
-              <input id="input" className="chatInput" onChange={props.onChange} />
-            <button className="btn-success">Send</button>
-          </div>
-        </form>
-      </div>
+    <div className="container-fluid my-container d-flex flex-column align-items-center  ">
+      <Link to='./teacherSearch' className="arrowWidth"><i className="fas fa-chevron-left fa-2x back arrowWidth"></i></Link>
 
+      {listMessages}
+      {textOfRecvMessages}
+      <form onSubmit={props.onSubmit} id="form" className="form fixed  " action="">
+             <input id="input" className="chatInput" onChange={props.onChange} />
+           <button className="btn-success">Send</button>
+       </form>
     </div>
-
   );
 }
