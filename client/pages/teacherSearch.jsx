@@ -36,7 +36,7 @@ export default function teacherSearch(props) {
         <form className=" d-flex  flex-column align-items-center justify-content-around mb-5">
           <div className="row form-group input-row-search">
             <div className="col">
-              <input type="text" onChange={props.onChange}name="studentName" placeholder="Search by name" className="inputSearch"/>
+              <input type="text" onChange={props.onChange}name="studentName" placeholder="Search by name" className="inputSearch" />
             </div>
           </div>
           <div className="row form-group input-row-search">
