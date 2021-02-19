@@ -5,7 +5,7 @@ export default function brown() {
   const history = useHistory();
 
   function toChatScreen() {
-    const path = './chatScreen';
+    const path = './chatForm';
     history.push(path);
   }
 

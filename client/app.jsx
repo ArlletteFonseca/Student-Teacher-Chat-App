@@ -7,82 +7,65 @@ import StudentList from './pages/studentList';
 import Pattison from './pages/students/pattison';
 import Brown from './pages/students/brown';
 import Grant from './pages/students/grant';
-import ChatScreen from './pages/chatScreen';
-import { io } from 'socket.io-client';
-
-const connectionOptions = {
-  reconnection: true,
-  reconnectionAttempts: 'Infinity',
-  timeout: 20000,
-  transports: ['websocket']
-};
-const socket = io('http://192.168.1.47:3001', connectionOptions);
+import ChatForm from './pages/chatForm';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      student: [],
+      students: [],
       studentName: null,
-      messageToSend: '',
-      teacherId: null,
-      studentId: null,
-      setResponse: ' ',
-      recvMessages: [],
-      oldMessages: []
+      messages: [],
+      studentID: null
     };
     this.handleChange = this.handleChange.bind(this);
-    this.handleMessage = this.handleMessage.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.addMessage = this.addMessage.bind(this);
+    this.handleID = this.handleID.bind(this);
   }
 
   componentDidMount() {
-    this.getStudents();
-    this.getMessages();
-    const connectionOptions = {
-      reconnection: true,
-      reconnectionAttempts: 'Infinity',
-      timeout: 20000,
-      transports: ['websocket']
-    };
-    io('http://192.168.1.47:3001', connectionOptions);
-    socket.on('message', message => {
-      this.setState({ recvMessages: [...this.state.recvMessages, message] });
-    });
-
+    this.getAllStudents();
+    this.getAllMessages();
   }
 
-  getStudents() {
+  getAllStudents() {
     fetch('/api/student')
       .then(res => res.json())
-      .then(data => this.setState({ student: data }))
+      .then(data => this.setState({ students: data }))
       .catch(error => console.error('Error', error));
   }
 
-  getMessages() {
+  getAllMessages() {
     fetch('/api/messages')
       .then(res => res.json())
-      .then(data => this.setState({ oldMessages: data }))
+      .then(data => this.setState({ messages: data }))
       .catch(error => console.error('Error', error));
   }
-  // bind
 
   handleChange(event) {
     this.setState({ studentName: event.target.value });
-
   }
 
-  handleMessage(event) {
-    event.preventDefault();
-    this.setState({ messageToSend: event.target.value });
-
+  handleID(studentID) {
+    this.setState({ studentID: studentID }, function () {
+    });
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
-    socket.emit('chat message', this.state.messageToSend);
-
-    event.target.reset();
+  addMessage(newMessage) {
+    const messageList = this.state.messages;
+    fetch('/api/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newMessage)
+    })
+      .then(res => res.json())
+      .then(newMessage => {
+        messageList.push(newMessage);
+        this.setState({ messages: messageList });
+      })
+      .catch(error => console.error('Error', error));
   }
 
   render() {
@@ -98,12 +81,12 @@ export default class App extends React.Component {
           <TeacherSearch
             value={this.state.studentName}
             onChange={this.handleChange}
-            onClick={this.handleClick}
           />
         </Route>
         <Route path='/studentList'>
           <StudentList
-            onChange={this.state.student}
+            onChange={this.state.students}
+            onClick={this.handleID}
           />
         </Route>
         <Route path='/pattison'>
@@ -115,16 +98,13 @@ export default class App extends React.Component {
         <Route path='/grant'>
           <Grant/>
         </Route>
-        <Route path='/chatScreen'>
-          <ChatScreen
-            onChange={this.handleMessage}
-            onSubmit= {this.handleSubmit}
-            newMessage={this.state.messageToSend}
-            recvMessages = {this.state.recvMessages}
-            oldMessages = {this.state.oldMessages}
+        <Route path='/chatForm'>
+          <ChatForm
+          database= {this.state.messages}
+          onSubmit= {this.addMessage}
+          studentID={this.state.studentID}
           />
         </Route>
-
       </div>
     );
   }
