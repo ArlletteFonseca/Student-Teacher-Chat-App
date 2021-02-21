@@ -33,7 +33,7 @@ io.on('connection', socket => {
 
 });
 
-// getting database
+// getting student database
 app.get('/api/student/', (req, res, next) => {
   const sql = `SELECT *
                    FROM "student"`;
@@ -54,10 +54,37 @@ app.get('/api/student/', (req, res, next) => {
     });
 });
 
+// getting teacher database
+app.get('/api/teacher/', (req, res, next) => {
+  const sql = `SELECT *
+                   FROM "teacher"`;
+  db.query(sql)
+    .then(result => {
+      const teacher = result.rows;
+      if (teacher.length > 0) {
+        res.status(200).json(teacher);
+      } else {
+        res.status(404).json([]);
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'An unexpected error occured, cannot query database'
+      });
+    });
+});
+
 // Get messages
 app.get('/api/messages/', (req, res, next) => {
-  const sql = `SELECT *
-                   FROM "messages"`;
+  const sql = `SELECT "m"."message", "s"."studentID","s"."firstName", "t"."teacherID","t"."lastName", "t"."firstName"
+                   FROM "messages" as "m"
+                   join "student" as "s" using ("studentID")
+                   join "teacher" as "t" using ("teacherID")
+                   Where "m"."studentID" = 3 and "m"."teacherID" = 2
+                   `;
+
+  //   console.log(params);
   db.query(sql)
     .then(result => {
       const message = result.rows;
@@ -74,37 +101,63 @@ app.get('/api/messages/', (req, res, next) => {
       });
     });
 });
+// app.get('/api/messages/', (req, res, next) => {
+//   const sql = `SELECT *
+//                    FROM "messages"
+//                    Where "messages"."studentID" = 3
+//                    `;
+//   db.query(sql)
+//     .then(result => {
+//       const message = result.rows;
+//       if (message.length > 0) {
+//         res.status(200).json(message);
+//       } else {
+//         res.status(404).json([]);
+//       }
+//     })
+//     .catch(err => {
+//       console.error(err);
+//       res.status(500).json({
+//         error: 'An unexpected error occured, cannot query database'
+//       });
+//     });
+// });
 
-app.get('/api/messages/:teacherID/:studentID', (req, res, next) => {
-  console.log(req);
-  // const sql = `SELECT *
-  //                  FROM "messages" as m
-  //                  join "students" as s using ("studentID")
-  //                  where "m"."studentID" = $1 and "m"."teacherID" = $2`;
-  // const ID = [req.params.studentID, req.params.teacherID];
-  // db.query(sql, ID)
-  //   .then(result => {
-  //     const message = result.rows;
-  //     if (message.length > 0) {
-  //       res.status(200).json(message);
-  //     } else {
-  //       res.status(404).json([]);
-  //     }
-  //   })
-  //   .catch(err => {
-  //     console.error(err);
-  //     res.status(500).json({
-  //       error: 'An unexpected error occured, cannot query database'
-  //     });
-  //   });
-});
+// app.get('/api/messages/:teacherID/:studentID', (req, res, next) => {
+
+//   const sql = `SELECT *
+//                    FROM "messages" as m
+//                    INNER JOIN "student" ON "student.studentID="messages.teacherID"
+//                     WHERE "m"."studentID"=$1 and "m"."teacherID=$2"
+//                    `;
+
+//   const { studentID, teacherID } = req.query;
+//   const params = [studentID, teacherID];
+//   console.log(params);
+
+//   db.query(sql, params)
+//     .then(result => {
+//       const message = result.rows;
+//       if (message.length > 0) {
+//         res.status(200).json(message);
+//       } else {
+//         res.status(404).json([]);
+//       }
+//     })
+//     .catch(err => {
+//       console.error(err);
+//       res.status(500).json({
+//         error: 'An unexpected error occured, cannot query database'
+//       });
+//     });
+// });
 
 // posting messages
 app.post('/api/messages/', (req, res, next) => {
 
-  const text = `INSERT INTO "messages" (message)
-                    VALUES($1)`;
-  const values = [req.body.message];
+  const text = `INSERT INTO "messages" ("message", "teacherID", "studentID")
+                    VALUES($1, $2, $3)`;
+  const values = [req.body.message, req.body.teacherID, req.body.studentID];
   db.query(text, values)
     .then(result => {
       const message = result.rows;

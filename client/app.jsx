@@ -25,7 +25,7 @@ export default class App extends React.Component {
 
   componentDidMount() {
     this.getAllStudents();
-    this.getAllMessages();
+    // this.getAllMessages();
   }
 
   getAllStudents() {
@@ -35,12 +35,12 @@ export default class App extends React.Component {
       .catch(error => console.error('Error', error));
   }
 
-  getAllMessages() {
-    fetch('/api/messages')
-      .then(res => res.json())
-      .then(data => this.setState({ messages: data }))
-      .catch(error => console.error('Error', error));
-  }
+  // getAllMessages() {
+  //   fetch('/api/messages')
+  //     .then(res => res.json())
+  //     .then(data => this.setState({ messages: data }))
+  //     .catch(error => console.error('Error', error));
+  // }
 
   handleChange(event) {
     this.setState({ studentName: event.target.value });
