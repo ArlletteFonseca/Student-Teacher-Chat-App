@@ -36,8 +36,13 @@ export default class ChatForm extends React.Component {
     };
     io('http://192.168.1.47:3001', connectionOptions);
     socket.on('message', message => {
+
       this.setState({ recvMessages: [...this.state.recvMessages, message] });
+
     });
+    // socket.on('message', message => {
+    //   this.setState({ recvMessages: [...this.state.recvMessages, message] });
+    // });
 
   }
 
@@ -50,16 +55,20 @@ export default class ChatForm extends React.Component {
     event.preventDefault();
     socket.emit('chat message', this.state.messageToSend);
     const newMessage = {
-      message: this.state.messageToSend
+      message: this.state.messageToSend,
+      teacherID: this.state.teacherID,
+      studentID: this.state.studentID
     };
     this.props.onSubmit(newMessage);
     event.target.reset();
   }
 
   getOldMessages() {
-    fetch(`/api/messages:teacherID=${this.state.teacherID}&studentID=${this.state.studentID}`)
+    fetch('/api/messages/')
+    // fetch(`/api/messages:teacherID=${this.state.teacherID}&studentID=${this.state.studentID}`)
       .then(res => res.json())
       .then(data => this.setState({ databaseMessages: data }))
+      // .then(data => console.log("mydata", data))
       .catch(error => console.error('Error', error));
   }
 
@@ -69,13 +78,14 @@ export default class ChatForm extends React.Component {
 
     const listMessages = oldMessages.map((msg, chatID) =>
       <ul key={chatID} className="list-group m-2 listWidth">
-        <span>{msg.teacherID}</span>
+        <span>{msg.firstName}{msg.lastName}</span>
         <li className="list-group-item d-flex justify-content-between align-items-center">{msg.message}</li>
       </ul>
     );
     const textOfRecvMessages = messagesReceived.map((msg, chatID) =>
       <ul key={chatID} className="list-group m-2 listWidth">
-        <li className="list-group-item d-flex justify-content-between align-items-center">{msg.message}</li>
+        <li className="list-group-item d-flex justify-content-between align-items-center">{msg}</li>
+        <li>{this.state.teacherID}</li>
       </ul>
     );
 
