@@ -30,7 +30,8 @@ export default function teacherSearch(props) {
         </div>
         <div className="row ">
           <div className="col ">
-            <h4 className="heading">Help a Student!</h4>
+            <h4 className="">Welcome {props.teacher[0].firstName}</h4>
+            <h5 className="m-3" >Help a Student!</h5>
           </div>
         </div>
         <form className=" d-flex  flex-column align-items-center justify-content-around mb-5">

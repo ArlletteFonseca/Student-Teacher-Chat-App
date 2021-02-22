@@ -16,7 +16,9 @@ export default class App extends React.Component {
       students: [],
       studentName: null,
       messages: [],
-      studentID: null
+      studentID: null,
+      teachers: [],
+      teacherID: 2
     };
     this.handleChange = this.handleChange.bind(this);
     this.addMessage = this.addMessage.bind(this);
@@ -25,7 +27,7 @@ export default class App extends React.Component {
 
   componentDidMount() {
     this.getAllStudents();
-    // this.getAllMessages();
+    this.getAllTeachers();
   }
 
   getAllStudents() {
@@ -35,12 +37,12 @@ export default class App extends React.Component {
       .catch(error => console.error('Error', error));
   }
 
-  // getAllMessages() {
-  //   fetch('/api/messages')
-  //     .then(res => res.json())
-  //     .then(data => this.setState({ messages: data }))
-  //     .catch(error => console.error('Error', error));
-  // }
+  getAllTeachers() {
+    fetch(`/api/teacher/${this.state.teacherID}`)
+      .then(res => res.json())
+      .then(data => this.setState({ teachers: data }))
+      .catch(error => console.error('Error', error));
+  }
 
   handleChange(event) {
     this.setState({ studentName: event.target.value });
@@ -81,6 +83,7 @@ export default class App extends React.Component {
           <TeacherSearch
             value={this.state.studentName}
             onChange={this.handleChange}
+            teacher={this.state.teachers}
           />
         </Route>
         <Route path='/studentList'>
@@ -103,6 +106,9 @@ export default class App extends React.Component {
           database= {this.state.messages}
           onSubmit= {this.addMessage}
           studentID={this.state.studentID}
+          teacherID={this.state.teacherID}
+          teacherList = {this.state.teachers}
+          studentList = {this.state.students}
           />
         </Route>
       </div>
