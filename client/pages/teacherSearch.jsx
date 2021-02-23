@@ -5,7 +5,7 @@ export default function teacherSearch(props) {
   const history = useHistory();
 
   function handleClick(e) {
-    e.preventDefault(e);
+    e.preventDefault();
     const lowercaseName = props.value.toLowerCase();
     if (lowercaseName.includes('brown') || lowercaseName.includes('michael')) {
       const path = './brown';
@@ -30,13 +30,14 @@ export default function teacherSearch(props) {
         </div>
         <div className="row ">
           <div className="col ">
-            <h4 className="heading">Help a Student!</h4>
+            <h4 className="">Welcome {props.teacher[0].firstName}</h4>
+            <h5 className="m-3" >Help a Student!</h5>
           </div>
         </div>
         <form className=" d-flex  flex-column align-items-center justify-content-around mb-5">
           <div className="row form-group input-row-search">
             <div className="col">
-              <input type="text" onChange={props.onChange}name="studentName" placeholder="Search by name" className="inputSearch" />
+              <input type="text" onChange={props.onChange}name="studentName" placeholder="Search by name" className="inputSearch" required/>
             </div>
           </div>
           <div className="row form-group input-row-search">
@@ -56,8 +57,8 @@ export default function teacherSearch(props) {
           <div className="row  menu-row">
             <div className="col p-0 d-flex align-items-end justify-content-between">
             <div><Link to='./'><i className="fas fa-sign-out-alt fa-2x"></i></Link></div>
-            <div><Link to='./messages'><i className="fas fa-envelope fa-2x"></i></Link></div>
-            <div><Link to='./userPage'><i className="fas fa-user fa-2x"></i></Link></div>
+            {/* <div><Link to='./messages'><i className="fas fa-envelope fa-2x"></i></Link></div>
+            <div><Link to='./userPage'><i className="fas fa-user fa-2x"></i></Link></div> */}
             </div>
           </div>
     </div>

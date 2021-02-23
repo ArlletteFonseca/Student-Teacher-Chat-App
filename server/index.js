@@ -55,10 +55,14 @@ app.get('/api/student/', (req, res, next) => {
 });
 
 // getting teacher database
-app.get('/api/teacher/', (req, res, next) => {
+app.get('/api/teacher/:teacherID', (req, res, next) => {
   const sql = `SELECT *
-                   FROM "teacher"`;
-  db.query(sql)
+                   FROM "teacher"
+                   where "teacherID" = $1`;
+  const teacherID = parseInt(req.params.teacherID, 10);
+  const params = [teacherID];
+
+  db.query(sql, params)
     .then(result => {
       const teacher = result.rows;
       if (teacher.length > 0) {
@@ -76,16 +80,17 @@ app.get('/api/teacher/', (req, res, next) => {
 });
 
 // Get messages
-app.get('/api/messages/', (req, res, next) => {
-  const sql = `SELECT "m"."message", "s"."studentID","s"."firstName", "t"."teacherID","t"."lastName", "t"."firstName"
-                   FROM "messages" as "m"
-                   join "student" as "s" using ("studentID")
-                   join "teacher" as "t" using ("teacherID")
-                   Where "m"."studentID" = 3 and "m"."teacherID" = 2
-                   `;
+app.get('/api/messages/:teacherID/:studentID', (req, res, next) => {
 
-  //   console.log(params);
-  db.query(sql)
+  const sql = `SELECT  *
+               From "messages" as "m"
+               Where "teacherID" = $1 and "studentID"= $2
+              `;
+
+  const teacherID = parseInt(req.params.teacherID, 10);
+  const studentID = parseInt(req.params.studentID, 10);
+  const params = [teacherID, studentID];
+  db.query(sql, params)
     .then(result => {
       const message = result.rows;
       if (message.length > 0) {
@@ -119,7 +124,7 @@ app.get('/api/messages/', (req, res, next) => {
 //       console.error(err);
 //       res.status(500).json({
 //         error: 'An unexpected error occured, cannot query database'
-//       });
+//        });
 //     });
 // });
 

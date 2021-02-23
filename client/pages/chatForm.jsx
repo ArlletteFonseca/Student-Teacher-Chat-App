@@ -15,11 +15,13 @@ export default class ChatForm extends React.Component {
     super(props);
     this.state = {
       recvMessages: [],
-      // databaseMessages: props.database,
       databaseMessages: [],
       messageToSend: '',
-      teacherID: 2,
-      studentID: props.studentID
+      teacherID: props.teacherID,
+      studentID: props.studentID,
+      teachers: props.teacherList,
+      students: props.studentList
+
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -36,14 +38,8 @@ export default class ChatForm extends React.Component {
     };
     io('http://192.168.1.47:3001', connectionOptions);
     socket.on('message', message => {
-
       this.setState({ recvMessages: [...this.state.recvMessages, message] });
-
     });
-    // socket.on('message', message => {
-    //   this.setState({ recvMessages: [...this.state.recvMessages, message] });
-    // });
-
   }
 
   handleChange(event) {
@@ -58,42 +54,44 @@ export default class ChatForm extends React.Component {
       message: this.state.messageToSend,
       teacherID: this.state.teacherID,
       studentID: this.state.studentID
+
     };
     this.props.onSubmit(newMessage);
     event.target.reset();
   }
 
   getOldMessages() {
-    fetch('/api/messages/')
-    // fetch(`/api/messages:teacherID=${this.state.teacherID}&studentID=${this.state.studentID}`)
+
+    fetch(`/api/messages/${this.state.teacherID}/${this.state.studentID}`)
       .then(res => res.json())
       .then(data => this.setState({ databaseMessages: data }))
-      // .then(data => console.log("mydata", data))
       .catch(error => console.error('Error', error));
   }
 
   render() {
     const oldMessages = this.state.databaseMessages;
     const messagesReceived = this.state.recvMessages;
-
+    const num = this.state.studentID - 1;
     const listMessages = oldMessages.map((msg, chatID) =>
       <ul key={chatID} className="list-group m-2 listWidth">
-        <span>{msg.firstName}{msg.lastName}</span>
+        <div>{this.state.students[num].firstName}</div>
         <li className="list-group-item d-flex justify-content-between align-items-center">{msg.message}</li>
       </ul>
     );
     const textOfRecvMessages = messagesReceived.map((msg, chatID) =>
-      <ul key={chatID} className="list-group m-2 listWidth">
-        <li className="list-group-item d-flex justify-content-between align-items-center">{msg}</li>
-        <li>{this.state.teacherID}</li>
+      <ul key={chatID} className="list-group m-2 listWidth overflow-auto">
+        <span>{this.state.teachers[0].firstName}</span>
+        <li className="list-group-item d-flex justify-content-between align-items-center overflow-auto">{msg}</li>
       </ul>
     );
 
     return (
       <div className="container-fluid my-container d-flex flex-column align-items-center  ">
         <Link to='./teacherSearch' className="arrowWidth"><i className="fas fa-chevron-left fa-2x back arrowWidth"></i></Link>
+        <div className="message-holder">
         {listMessages}
         {textOfRecvMessages}
+        </div>
       <form onSubmit={this.handleSubmit} className="form fixed" method="post">
         <input
           id="input"
