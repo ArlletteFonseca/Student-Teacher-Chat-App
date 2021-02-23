@@ -65,7 +65,6 @@ export default class ChatForm extends React.Component {
     fetch(`/api/messages/${this.state.teacherID}/${this.state.studentID}`)
       .then(res => res.json())
       .then(data => this.setState({ databaseMessages: data }))
-
       .catch(error => console.error('Error', error));
   }
 
@@ -75,22 +74,24 @@ export default class ChatForm extends React.Component {
     const num = this.state.studentID - 1;
     const listMessages = oldMessages.map((msg, chatID) =>
       <ul key={chatID} className="list-group m-2 listWidth">
-        <span>{this.state.students[num].firstName}</span>
+        <div>{this.state.students[num].firstName}</div>
         <li className="list-group-item d-flex justify-content-between align-items-center">{msg.message}</li>
       </ul>
     );
     const textOfRecvMessages = messagesReceived.map((msg, chatID) =>
-      <ul key={chatID} className="list-group m-2 listWidth">
+      <ul key={chatID} className="list-group m-2 listWidth overflow-auto">
         <span>{this.state.teachers[0].firstName}</span>
-        <li className="list-group-item d-flex justify-content-between align-items-center">{msg}</li>
+        <li className="list-group-item d-flex justify-content-between align-items-center overflow-auto">{msg}</li>
       </ul>
     );
 
     return (
       <div className="container-fluid my-container d-flex flex-column align-items-center  ">
         <Link to='./teacherSearch' className="arrowWidth"><i className="fas fa-chevron-left fa-2x back arrowWidth"></i></Link>
+        <div className="message-holder">
         {listMessages}
         {textOfRecvMessages}
+        </div>
       <form onSubmit={this.handleSubmit} className="form fixed" method="post">
         <input
           id="input"

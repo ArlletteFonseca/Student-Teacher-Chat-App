@@ -204,4 +204,12 @@ a {
 
 .arrowWidth {
   width: 350px;
+  position: relative;
+  z-index: 3;
+}
+
+.message-holder {
+  position: absolute;
+  overflow-y: scroll;
+  max-height: 100vh;
 }
