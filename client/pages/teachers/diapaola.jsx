@@ -5,23 +5,23 @@ export default function brown() {
   const history = useHistory();
 
   function toChatScreen() {
-    const path = './chatFormForTeacher';
+    const path = './chatFormForStudent';
     history.push(path);
   }
 
   return (
     <div className="container-fluid cardContainer d-flex flex-column justify-content-center">
-      <Link to='./teacherSearch'><i className="fas fa-chevron-left fa-2x back"></i></Link>
+      <Link to='./studentSearch'><i className="fas fa-chevron-left fa-2x back"></i></Link>
       <div className="card cardContainer text-center d-flex flex-column justify-content-around">
         <div className="card-header">
           <div className="card">
-            <img src='img/amypattison.jpeg' alt="Student Michael Brown" />
+            <img src='img/michaelbrown.jpeg' alt="Student Michael Brown" />
           </div>
         </div>
       </div>
       <div className="card-body text-center">
-        <h5 className="card-title">Amy Pattison</h5>
-        <p className="card-text">Freshman</p>
+        <h5 className="card-title">Dr. Brant Diapaola</h5>
+        <p className="card-text">Algebra</p>
         <button className="chatBtn " onClick={toChatScreen}>Start Chat</button>
       </div>
     </div>

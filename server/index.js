@@ -83,8 +83,6 @@ app.get('/api/messages/', (req, res, next) => {
                    join "teacher" as "t" using ("teacherID")
                    Where "m"."studentID" = 3 and "m"."teacherID" = 2
                    `;
-
-  //   console.log(params);
   db.query(sql)
     .then(result => {
       const message = result.rows;
@@ -101,56 +99,6 @@ app.get('/api/messages/', (req, res, next) => {
       });
     });
 });
-// app.get('/api/messages/', (req, res, next) => {
-//   const sql = `SELECT *
-//                    FROM "messages"
-//                    Where "messages"."studentID" = 3
-//                    `;
-//   db.query(sql)
-//     .then(result => {
-//       const message = result.rows;
-//       if (message.length > 0) {
-//         res.status(200).json(message);
-//       } else {
-//         res.status(404).json([]);
-//       }
-//     })
-//     .catch(err => {
-//       console.error(err);
-//       res.status(500).json({
-//         error: 'An unexpected error occured, cannot query database'
-//       });
-//     });
-// });
-
-// app.get('/api/messages/:teacherID/:studentID', (req, res, next) => {
-
-//   const sql = `SELECT *
-//                    FROM "messages" as m
-//                    INNER JOIN "student" ON "student.studentID="messages.teacherID"
-//                     WHERE "m"."studentID"=$1 and "m"."teacherID=$2"
-//                    `;
-
-//   const { studentID, teacherID } = req.query;
-//   const params = [studentID, teacherID];
-//   console.log(params);
-
-//   db.query(sql, params)
-//     .then(result => {
-//       const message = result.rows;
-//       if (message.length > 0) {
-//         res.status(200).json(message);
-//       } else {
-//         res.status(404).json([]);
-//       }
-//     })
-//     .catch(err => {
-//       console.error(err);
-//       res.status(500).json({
-//         error: 'An unexpected error occured, cannot query database'
-//       });
-//     });
-// });
 
 // posting messages
 app.post('/api/messages/', (req, res, next) => {

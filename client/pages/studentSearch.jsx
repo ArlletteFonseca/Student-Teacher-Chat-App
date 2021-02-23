@@ -30,37 +30,37 @@ export default function teacherSearch(props) {
         </div>
         <div className="row ">
           <div className="col ">
-            <h4 className="heading">Help a Student!</h4>
+            <h4 className="heading">Find a Teacher for help!</h4>
           </div>
         </div>
         <form className=" d-flex  flex-column align-items-center justify-content-around mb-5">
           <div className="row form-group input-row-search">
             <div className="col">
-              <input type="text" onChange={props.onChange}name="studentName" placeholder="Search by name" className="inputSearch" />
+              <input type="text" onChange={props.onChange} name="studentName" placeholder="Search by name" className="inputSearch" />
             </div>
           </div>
           <div className="row form-group input-row-search">
             <div className="col">
-              <button onClick={handleClick} type="submit"className="searchBtn">Search</button>
+              <button onClick={handleClick} type="submit" className="searchBtn">Search</button>
             </div>
           </div>
-            <div className="row form-group link-row-search">
-              <div className="col ">
-                <Link className="linkSearch" to='./studentList'>Browse by Name</Link>
-              </div>
+          <div className="row form-group link-row-search">
+            <div className="col ">
+              <Link className="linkSearch" to='./teacherList'>Browse by Name</Link>
             </div>
-    </form>
-          <div className="row line-row">
+          </div>
+        </form>
+        <div className="row line-row">
 
-          </div>
-          <div className="row  menu-row">
-            <div className="col p-0 d-flex align-items-end justify-content-between">
+        </div>
+        <div className="row  menu-row">
+          <div className="col p-0 d-flex align-items-end justify-content-between">
             <div><Link to='./'><i className="fas fa-sign-out-alt fa-2x"></i></Link></div>
             {/* <div><Link to='./messages'><i className="fas fa-envelope fa-2x"></i></Link></div>
             <div><Link to='./userPage'><i className="fas fa-user fa-2x"></i></Link></div> */}
-            </div>
           </div>
-    </div>
+        </div>
+      </div>
     </div>
   );
 }

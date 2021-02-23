@@ -16,7 +16,7 @@ export default function home(props) {
       </div>
       <div className="row  link-row ">
         <div className="col ">
-          <Link className="link" to=''>Student Login </Link>
+          <Link className="link" to='/studentLogin'>Student Login </Link>
         </div>
       </div>
       <div className="row  link-row" >

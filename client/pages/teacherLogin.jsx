@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 export default function teacherLogin(props) {
   const history = useHistory();
 
-  function handleSubmit(e) {
+  function handleTeacherSubmit(e) {
     e.preventDefault();
     const path = './teacherSearch';
     history.push(path);
@@ -22,7 +22,7 @@ export default function teacherLogin(props) {
           <h4 className="heading">Teacher Login</h4>
         </div>
       </div>
-      <form onSubmit={handleSubmit} className=" justify-content-center align-items-center">
+      <form onSubmit={handleTeacherSubmit} className=" justify-content-center align-items-center">
         <div className="row  form-group input-row">
           <div className="col">
             <input type="text" placeholder="Enter email" className="input" required/>

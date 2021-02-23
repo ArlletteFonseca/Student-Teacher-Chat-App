@@ -64,8 +64,7 @@ export default class ChatForm extends React.Component {
   }
 
   getOldMessages() {
-    fetch('/api/messages/')
-    // fetch(`/api/messages:teacherID=${this.state.teacherID}&studentID=${this.state.studentID}`)
+    fetch(`/api/messages/${this.state.teacherID}/${this.state.studentID}`)
       .then(res => res.json())
       .then(data => this.setState({ databaseMessages: data }))
       // .then(data => console.log("mydata", data))
@@ -91,17 +90,17 @@ export default class ChatForm extends React.Component {
 
     return (
       <div className="container-fluid my-container d-flex flex-column align-items-center  ">
-        <Link to='./teacherSearch' className="arrowWidth"><i className="fas fa-chevron-left fa-2x back arrowWidth"></i></Link>
+        <Link to='./studentSearch' className="arrowWidth"><i className="fas fa-chevron-left fa-2x back arrowWidth"></i></Link>
         {listMessages}
         {textOfRecvMessages}
-      <form onSubmit={this.handleSubmit} className="form fixed" method="post">
-        <input
-          id="input"
-          className="chatInput"
-          onChange={this.handleChange}
-        />
-        <button className="btn-success">Send</button>
-      </form>
+        <form onSubmit={this.handleSubmit} className="form fixed" method="post">
+          <input
+            id="input"
+            className="chatInput"
+            onChange={this.handleChange}
+          />
+          <button className="btn-success">Send</button>
+        </form>
       </div>
     );
   }

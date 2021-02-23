@@ -7,25 +7,38 @@ import StudentList from './pages/studentList';
 import Pattison from './pages/students/pattison';
 import Brown from './pages/students/brown';
 import Grant from './pages/students/grant';
-import ChatForm from './pages/chatForm';
+import ChatFormForTeacher from './pages/chatFormForTeacher';
+import ChatFormForStudent from './pages/chatFormForStudent';
+import StudentLogin from './pages/studentLogin';
+import StudentSearch from './pages/studentSearch';
+import TeacherList from './pages/teacherList';
+import Mund from './pages/teachers/mund';
+import Diapaola from './pages/teachers/diapaola';
+import Hosea from './pages/teachers/hosea';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       students: [],
-      studentName: null,
       messages: [],
-      studentID: null
+      studentID: 1,
+      teacherID: 3,
+      teachers: [],
+      studentName: '',
+      teacherName: ''
+
     };
-    this.handleChange = this.handleChange.bind(this);
+    this.handleTeacherChange = this.handleTeacherChange.bind(this);
     this.addMessage = this.addMessage.bind(this);
-    this.handleID = this.handleID.bind(this);
+    this.handleStudentID = this.handleStudentID.bind(this);
+    this.handleTeacherID = this.handleTeacherID.bind(this);
+    this.handleStudentChange = this.handleStudentChange.bind(this);
   }
 
   componentDidMount() {
     this.getAllStudents();
-    // this.getAllMessages();
+    this.getAllTeachers();
   }
 
   getAllStudents() {
@@ -35,20 +48,28 @@ export default class App extends React.Component {
       .catch(error => console.error('Error', error));
   }
 
-  // getAllMessages() {
-  //   fetch('/api/messages')
-  //     .then(res => res.json())
-  //     .then(data => this.setState({ messages: data }))
-  //     .catch(error => console.error('Error', error));
-  // }
+  getAllTeachers() {
+    fetch('/api/teacher')
+      .then(res => res.json())
+      .then(data => this.setState({ teachers: data }))
+      .catch(error => console.error('Error', error));
+  }
 
-  handleChange(event) {
+  handleTeacherChange(event) {
     this.setState({ studentName: event.target.value });
   }
 
-  handleID(studentID) {
-    this.setState({ studentID: studentID }, function () {
+  handleStudentChange(event) {
+    this.setState({ teacherName: event.target.value });
+  }
+
+  handleTeacherID(key) {
+    this.setState({ studentID: key }, function () {
     });
+  }
+
+  handleStudentID(key) {
+    this.setState({ teacherID: key });
   }
 
   addMessage(newMessage) {
@@ -77,16 +98,31 @@ export default class App extends React.Component {
         <Route path='/teacherLogin'>
           <TeacherLogin/>
         </Route>
+        <Route path='/studentLogin'>
+          <StudentLogin/>
+        </Route>
         <Route path='/teacherSearch'>
           <TeacherSearch
+            onChange={this.handleTeacherChange}
             value={this.state.studentName}
-            onChange={this.handleChange}
+          />
+        </Route>
+        <Route path='/studentSearch'>
+          <StudentSearch
+            onChange={this.handleStudentChange}
+            value={this.state.teacherName}
           />
         </Route>
         <Route path='/studentList'>
           <StudentList
             onChange={this.state.students}
-            onClick={this.handleID}
+            onClick={this.handleStudentID}
+          />
+        </Route>
+        <Route path='/teacherList'>
+          <TeacherList
+            onChange={this.state.teachers}
+            onClick={this.handleTeacherID}
           />
         </Route>
         <Route path='/pattison'>
@@ -98,11 +134,28 @@ export default class App extends React.Component {
         <Route path='/grant'>
           <Grant/>
         </Route>
-        <Route path='/chatForm'>
-          <ChatForm
+        <Route path='/mund'>
+          <Mund/>
+        </Route>
+        <Route path='/diapaola'>
+          <Diapaola/>
+        </Route>
+        <Route path='/hosea'>
+          <Hosea/>
+        </Route>
+
+        <Route path='/chatFormForTeacher'>
+          <ChatFormForTeacher
           database= {this.state.messages}
           onSubmit= {this.addMessage}
           studentID={this.state.studentID}
+          />
+        </Route>
+        <Route path='/chatFormForStudent'>
+          <ChatFormForStudent
+          database= {this.state.messages}
+          onSubmit= {this.addMessage}
+          teacherID={this.state.studentID}
           />
         </Route>
       </div>
