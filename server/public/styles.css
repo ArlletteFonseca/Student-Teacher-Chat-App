@@ -25,7 +25,7 @@ a {
 
 /* app heading */
 .heading {
-  height: 80px;
+  height: 55px;
   font-size: 1.4rem;
 }
 
@@ -212,4 +212,8 @@ a {
   position: absolute;
   overflow-y: scroll;
   max-height: 100vh;
+}
+
+.img {
+  height: 300px;
 }

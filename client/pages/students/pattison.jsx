@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
-export default function brown() {
+export default function brown(props) {
   const history = useHistory();
 
   function toChatScreen() {
-    const path = './chatForm';
+    const path = './chatFormForTeacher';
     history.push(path);
+    props.onClick(1);
   }
 
   return (

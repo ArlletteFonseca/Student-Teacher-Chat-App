@@ -7,14 +7,14 @@ export default function teacherSearch(props) {
   function handleClick(e) {
     e.preventDefault(e);
     const lowercaseName = props.value.toLowerCase();
-    if (lowercaseName.includes('brown') || lowercaseName.includes('michael')) {
-      const path = './brown';
+    if (lowercaseName.includes('diapaola') || lowercaseName.includes('brant')) {
+      const path = './diapaola';
       history.push(path);
-    } else if (lowercaseName.includes('amy') || lowercaseName.includes('pattison')) {
-      const path = './pattison';
+    } else if (lowercaseName.includes('darlene') || lowercaseName.includes('mund')) {
+      const path = './mund';
       history.push(path);
-    } else if (lowercaseName.includes('josh') || lowercaseName.includes('grant')) {
-      const path = './grant';
+    } else if (lowercaseName.includes('jack') || lowercaseName.includes('hosea')) {
+      const path = './hosea';
       history.push(path);
     }
 
@@ -30,7 +30,8 @@ export default function teacherSearch(props) {
         </div>
         <div className="row ">
           <div className="col ">
-            <h4 className="heading">Find a Teacher for help!</h4>
+            <h5 className="">Welcome</h5>
+            <h5 className="heading">Find a Teacher for help!</h5>
           </div>
         </div>
         <form className=" d-flex  flex-column align-items-center justify-content-around mb-5">
