@@ -15,10 +15,9 @@ export default class ChatForm extends React.Component {
     super(props);
     this.state = {
       recvMessages: [],
-      // databaseMessages: props.database,
       databaseMessages: [],
       messageToSend: '',
-      teacherID: 2,
+      teacherID: props.teacherID,
       studentID: props.studentID
     };
     this.handleChange = this.handleChange.bind(this);
@@ -74,17 +73,15 @@ export default class ChatForm extends React.Component {
   render() {
     const oldMessages = this.state.databaseMessages;
     const messagesReceived = this.state.recvMessages;
-
     const listMessages = oldMessages.map((msg, chatID) =>
       <ul key={chatID} className="list-group m-2 listWidth">
-        <span>{msg.firstName}{msg.lastName}</span>
+        <p>{msg.firstName} {msg.lastName}</p>
         <li className="list-group-item d-flex justify-content-between align-items-center">{msg.message}</li>
       </ul>
     );
     const textOfRecvMessages = messagesReceived.map((msg, chatID) =>
       <ul key={chatID} className="list-group m-2 listWidth">
         <li className="list-group-item d-flex justify-content-between align-items-center">{msg}</li>
-        <li>{this.state.teacherID}</li>
       </ul>
     );
 

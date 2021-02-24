@@ -18,7 +18,7 @@ export default class ChatForm extends React.Component {
       // databaseMessages: props.database,
       databaseMessages: [],
       messageToSend: '',
-      teacherID: 2,
+      teacherID: props.teacherID,
       studentID: props.studentID
     };
     this.handleChange = this.handleChange.bind(this);
@@ -56,8 +56,8 @@ export default class ChatForm extends React.Component {
     socket.emit('chat message', this.state.messageToSend);
     const newMessage = {
       message: this.state.messageToSend,
-      teacherID: this.state.teacherID,
-      studentID: this.state.studentID
+      studentID: this.state.studentID,
+      teacherID: this.state.teacherID
     };
     this.props.onSubmit(newMessage);
     event.target.reset();
@@ -84,8 +84,8 @@ export default class ChatForm extends React.Component {
     );
     const textOfRecvMessages = messagesReceived.map((msg, chatID) =>
       <ul key={chatID} className="list-group m-2 listWidth">
+
         <li className="list-group-item d-flex justify-content-between align-items-center">{msg}</li>
-        <li>{this.state.teacherID}</li>
       </ul>
     );
 

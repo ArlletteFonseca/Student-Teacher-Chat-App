@@ -55,14 +55,11 @@ app.get('/api/student/', (req, res, next) => {
 });
 
 // getting teacher database
-app.get('/api/teacher/:teacherID', (req, res, next) => {
+app.get('/api/teacher/', (req, res, next) => {
   const sql = `SELECT *
-                   FROM "teacher"
-                   where "teacherID" = $1`;
-  const teacherID = parseInt(req.params.teacherID, 10);
-  const params = [teacherID];
+                   FROM "teacher"`;
 
-  db.query(sql, params)
+  db.query(sql)
     .then(result => {
       const teacher = result.rows;
       if (teacher.length > 0) {
@@ -84,6 +81,8 @@ app.get('/api/messages/:teacherID/:studentID', (req, res, next) => {
 
   const sql = `SELECT  *
                From "messages" as "m"
+               JOIN "student" using ("studentID")
+               JOIN "teacher" using ("teacherID")
                Where "teacherID" = $1 and "studentID"= $2
               `;
 
@@ -106,40 +105,16 @@ app.get('/api/messages/:teacherID/:studentID', (req, res, next) => {
       });
     });
 });
-// app.get('/api/messages/', (req, res, next) => {
-//   const sql = `SELECT *
-//                    FROM "messages"
-//                    Where "messages"."studentID" = 3
-//                    `;
-//   db.query(sql)
-//     .then(result => {
-//       const message = result.rows;
-//       if (message.length > 0) {
-//         res.status(200).json(message);
-//       } else {
-//         res.status(404).json([]);
-//       }
-//     })
-//     .catch(err => {
-//       console.error(err);
-//       res.status(500).json({
-//         error: 'An unexpected error occured, cannot query database'
-//        });
-//     });
-// });
-
 // app.get('/api/messages/:teacherID/:studentID', (req, res, next) => {
 
-//   const sql = `SELECT *
-//                    FROM "messages" as m
-//                    INNER JOIN "student" ON "student.studentID="messages.teacherID"
-//                     WHERE "m"."studentID"=$1 and "m"."teacherID=$2"
-//                    `;
+//   const sql = `SELECT  *
+//                From "messages" as "m"
+//                Where "teacherID" = $1 and "studentID"= $2
+//               `;
 
-//   const { studentID, teacherID } = req.query;
-//   const params = [studentID, teacherID];
-//   console.log(params);
-
+//   const teacherID = parseInt(req.params.teacherID, 10);
+//   const studentID = parseInt(req.params.studentID, 10);
+//   const params = [teacherID, studentID];
 //   db.query(sql, params)
 //     .then(result => {
 //       const message = result.rows;
