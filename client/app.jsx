@@ -22,12 +22,13 @@ export default class App extends React.Component {
     this.state = {
       students: [],
       messages: [],
-      studentID: 3,
+      studentID: 2,
       teacherID: 2,
       teachers: [],
-      studentName: '',
-      teacherName: ''
-
+      searchStudentName: '',
+      searchTeacherName: '',
+      teacherName: 'Darlene Mund',
+      studentName: 'Josh Grant'
     };
 
     this.addMessage = this.addMessage.bind(this);
@@ -59,11 +60,11 @@ export default class App extends React.Component {
   }
 
   handleStudentName(event) {
-    this.setState({ studentName: event.target.value });
+    this.setState({ searchStudentName: event.target.value });
   }
 
   handleTeacherName(event) {
-    this.setState({ teacherName: event.target.value });
+    this.setState({ searchTeacherName: event.target.value });
   }
 
   handleStudentID(key) {
@@ -110,6 +111,7 @@ export default class App extends React.Component {
             onChange={this.handleStudentName}
             teacher={this.state.teachers}
             teacherID={this.state.teacherID}
+
           />
         </Route>
         <Route path='/studentSearch'>
@@ -171,6 +173,7 @@ export default class App extends React.Component {
             teacherID={this.state.teacherID}
             teacherList={this.state.teachers}
             studentList={this.state.students}
+            teacherName={this.state.teacherName}
           />
         </Route>
         <Route path='/chatFormForStudent'>
@@ -181,6 +184,7 @@ export default class App extends React.Component {
             teacherID={this.state.teacherID}
             teacherList={this.state.teachers}
             studentList={this.state.students}
+            studentName={this.state.studentName}
           />
         </Route>
       </div>

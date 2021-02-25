@@ -217,3 +217,16 @@ a {
 .img {
   height: 300px;
 }
+
+.messagesBody {
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  scroll-snap-type: y proximity;
+  height: 90vh;
+}
+
+.chatScreen {
+  width: 300px;
+  overflow-y: scroll;
+  max-height: 100px;
+}
