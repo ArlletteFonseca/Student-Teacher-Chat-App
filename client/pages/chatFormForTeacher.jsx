@@ -19,7 +19,8 @@ export default class ChatForm extends React.Component {
       databaseMessages: [],
       messageToSend: '',
       teacherID: props.teacherID,
-      studentID: props.studentID
+      studentID: props.studentID,
+      sender: props.teacherName
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -57,15 +58,15 @@ export default class ChatForm extends React.Component {
     const newMessage = {
       message: this.state.messageToSend,
       studentID: this.state.studentID,
-      teacherID: this.state.teacherID
+      teacherID: this.state.teacherID,
+      sender: this.state.sender
     };
     this.props.onSubmit(newMessage);
     event.target.reset();
   }
 
   getOldMessages() {
-
-    fetch(`/api/messages/${this.state.teacherID}/${this.state.studentID}`)
+    fetch(`/api/messages/${this.state.studentID}/${this.state.teacherID}`)
       .then(res => res.json())
       .then(data => this.setState({ databaseMessages: data }))
       // .then(data => console.log("mydata", data))
@@ -77,23 +78,26 @@ export default class ChatForm extends React.Component {
     const messagesReceived = this.state.recvMessages;
 
     const listMessages = oldMessages.map((msg, chatID) =>
-      <ul key={chatID} className="list-group m-2 listWidth">
-        <span>{msg.firstName}{msg.lastName}</span>
+      <ul key={chatID} className="list-group m-2 listWidth ">
+        <span>{msg.sender}</span>
         <li className="list-group-item d-flex justify-content-between align-items-center">{msg.message}</li>
       </ul>
     );
     const textOfRecvMessages = messagesReceived.map((msg, chatID) =>
-      <ul key={chatID} className="list-group m-2 listWidth">
-
+      <ul key={chatID} className="list-group m-2 listWidth ">
+        <span>{this.state.sender}</span>
         <li className="list-group-item d-flex justify-content-between align-items-center">{msg}</li>
       </ul>
     );
 
     return (
-      <div className="container-fluid my-container d-flex flex-column align-items-center  ">
+
+      <div className="container-fluid my-container d-flex flex-column align-items-center ">
         <Link to='./teacherSearch' className="arrowWidth"><i className="fas fa-chevron-left fa-2x back arrowWidth"></i></Link>
-        {listMessages}
+
+          {listMessages}
         {textOfRecvMessages}
+
       <form onSubmit={this.handleSubmit} className="form fixed" method="post">
         <input
           id="input"

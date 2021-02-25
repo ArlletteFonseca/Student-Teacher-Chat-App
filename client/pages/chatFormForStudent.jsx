@@ -18,7 +18,8 @@ export default class ChatForm extends React.Component {
       databaseMessages: [],
       messageToSend: '',
       teacherID: props.teacherID,
-      studentID: props.studentID
+      studentID: props.studentID,
+      sender: props.studentName
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -56,7 +57,8 @@ export default class ChatForm extends React.Component {
     const newMessage = {
       message: this.state.messageToSend,
       teacherID: this.state.teacherID,
-      studentID: this.state.studentID
+      studentID: this.state.studentID,
+      sender: this.state.sender
     };
     this.props.onSubmit(newMessage);
     event.target.reset();
@@ -74,13 +76,14 @@ export default class ChatForm extends React.Component {
     const oldMessages = this.state.databaseMessages;
     const messagesReceived = this.state.recvMessages;
     const listMessages = oldMessages.map((msg, chatID) =>
-      <ul key={chatID} className="list-group m-2 listWidth">
-        <p>{msg.firstName} {msg.lastName}</p>
+      <ul key={chatID} className="list-group m-2 listWidth ">
+        <p>{msg.sender}</p>
         <li className="list-group-item d-flex justify-content-between align-items-center">{msg.message}</li>
       </ul>
     );
     const textOfRecvMessages = messagesReceived.map((msg, chatID) =>
-      <ul key={chatID} className="list-group m-2 listWidth">
+      <ul key={chatID} className="list-group m-2 listWidth ">
+        <span>{this.state.sender}</span>
         <li className="list-group-item d-flex justify-content-between align-items-center">{msg}</li>
       </ul>
     );
@@ -89,6 +92,7 @@ export default class ChatForm extends React.Component {
       <div className="container-fluid my-container d-flex flex-column align-items-center  ">
         <Link to='./studentSearch' className="arrowWidth"><i className="fas fa-chevron-left fa-2x back arrowWidth"></i></Link>
         {listMessages}
+
         {textOfRecvMessages}
         <form onSubmit={this.handleSubmit} className="form fixed" method="post">
           <input
