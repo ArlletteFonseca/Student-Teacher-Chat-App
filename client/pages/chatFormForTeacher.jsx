@@ -1,6 +1,7 @@
 import React from 'react';
 import { io } from 'socket.io-client';
 import { Link } from 'react-router-dom';
+
 // original chat form
 const connectionOptions = {
   reconnection: true,
@@ -21,14 +22,15 @@ export default class ChatForm extends React.Component {
       teacherID: props.teacherID,
       studentID: props.studentID,
       sender: props.teacherName
+
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-
   }
 
   componentDidMount() {
     this.getOldMessages();
+
     const connectionOptions = {
       reconnection: true,
       reconnectionAttempts: 'Infinity',
@@ -36,31 +38,39 @@ export default class ChatForm extends React.Component {
       transports: ['websocket']
     };
     io('http://192.168.1.47:3001', connectionOptions);
-    socket.on('message', message => {
-
-      this.setState({ recvMessages: [...this.state.recvMessages, message] });
-
-    });
     // socket.on('message', message => {
+    //   console.log("hello", message.name)
     //   this.setState({ recvMessages: [...this.state.recvMessages, message] });
     // });
+    socket.on('message', message => {
+
+      this.setState(
+        { recvMessages: [...this.state.recvMessages, message.message] }
+
+      );
+
+    });
 
   }
 
   handleChange(event) {
     event.preventDefault();
     this.setState({ messageToSend: event.target.value });
+
   }
 
   handleSubmit(event) {
-    event.preventDefault();
-    socket.emit('chat message', this.state.messageToSend);
     const newMessage = {
       message: this.state.messageToSend,
       studentID: this.state.studentID,
       teacherID: this.state.teacherID,
       sender: this.state.sender
     };
+
+    event.preventDefault();
+    // socket.emit('chat message', this.state.messageToSend);
+
+    socket.emit('chat message', newMessage);
     this.props.onSubmit(newMessage);
     event.target.reset();
   }
@@ -76,37 +86,35 @@ export default class ChatForm extends React.Component {
   render() {
     const oldMessages = this.state.databaseMessages;
     const messagesReceived = this.state.recvMessages;
-
     const listMessages = oldMessages.map((msg, chatID) =>
       <ul key={chatID} className="list-group m-2 listWidth ">
-        <span>{msg.sender}</span>
+        {msg.sender}
         <li className="list-group-item d-flex justify-content-between align-items-center">{msg.message}</li>
       </ul>
     );
-    const textOfRecvMessages = messagesReceived.map((msg, chatID) =>
+    const textOfRecvMessages = messagesReceived.map((msg, chatID, sender) =>
       <ul key={chatID} className="list-group m-2 listWidth ">
-        <span>{this.state.sender}</span>
         <li className="list-group-item d-flex justify-content-between align-items-center">{msg}</li>
       </ul>
     );
-
     return (
 
-      <div className="container-fluid my-container d-flex flex-column align-items-center ">
-        <Link to='./teacherSearch' className="arrowWidth"><i className="fas fa-chevron-left fa-2x back arrowWidth"></i></Link>
-
-          {listMessages}
+        <div >
+            <Link to='./teacherSearch' className="arrowWidth"><i className="fas fa-chevron-left fa-2x back arrowWidth"></i></Link>
+      <div className="container-fluid my-container d-flex flex-column align-items-center chatScreen" >
+        {listMessages}
         {textOfRecvMessages}
-
-      <form onSubmit={this.handleSubmit} className="form fixed" method="post">
-        <input
-          id="input"
-          className="chatInput"
-          onChange={this.handleChange}
-        />
-        <button className="btn-success">Send</button>
-      </form>
+          <form onSubmit={this.handleSubmit} className="form fixed gray form-width " method="post">
+            <input
+              id="input"
+              className="chatInput"
+              onChange={this.handleChange}
+            />
+            <button className="btn-success">Send</button>
+          </form>
       </div>
+      </div>
+
     );
   }
 
