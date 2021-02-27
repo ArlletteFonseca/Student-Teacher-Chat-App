@@ -13,7 +13,7 @@ a {
 }
 
 .my-container {
-  height: 100vh;
+  height: 90vh;
   text-align: center;
 }
 
@@ -165,7 +165,7 @@ a {
 
 .listWidth {
   max-width: 500px;
-  width: 350px;
+  width: 300px;
 }
 
 .chatLink {
@@ -184,12 +184,11 @@ a {
 }
 
 .chatInput {
-  padding: 0 1rem;
   border-radius: 2rem;
   margin: 0.25rem;
   border: 1px rgb(231, 224, 224) solid;
   width: 80%;
-  height: 80%;
+  height: 50px;
   font-size: 1.4rem;
 }
 
@@ -197,9 +196,7 @@ a {
   position: fixed;
   bottom: 0;
   z-index: 3000;
-  background-color: gray;
-  height: 50px;
-  width: 375px;
+  height: 60px;
 }
 
 .arrowWidth {
@@ -219,14 +216,23 @@ a {
 }
 
 .messagesBody {
-  overflow-y: auto;
+  overflow-y: sc;
   overscroll-behavior-y: contain;
   scroll-snap-type: y proximity;
-  height: 90vh;
+  height: 80vh;
 }
 
 .chatScreen {
-  width: 300px;
   overflow-y: scroll;
-  max-height: 100px;
+  max-height: 675px;
+  max-width: 375px;
+  border: 1px rgb(233, 228, 228) solid;
+}
+
+.gray {
+  background-color: gray;
+}
+
+.form-width {
+  width: 385px;
 }

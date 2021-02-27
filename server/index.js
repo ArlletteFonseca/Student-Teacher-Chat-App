@@ -26,8 +26,13 @@ io.on('connection', socket => {
   });
 
   // prints out Chat message event
+  // socket.on('chat message', msg => {
+  //   console.log('object of messasge', msg);
+  //   io.emit('message', msg.sender);
+  // });
+
   socket.on('chat message', msg => {
-    io.emit('message', msg);
+    io.emit('message', { name: msg.sender, message: msg.message });
   });
 
 });

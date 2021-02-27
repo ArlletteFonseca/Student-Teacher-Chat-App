@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Home from './pages/home';
 import { Route } from 'react-router-dom';
@@ -22,13 +23,13 @@ export default class App extends React.Component {
     this.state = {
       students: [],
       messages: [],
-      studentID: 2,
+      studentID: 3,
       teacherID: 2,
       teachers: [],
       searchStudentName: '',
       searchTeacherName: '',
       teacherName: 'Darlene Mund',
-      studentName: 'Josh Grant'
+      studentName: 'Michael Brown'
     };
 
     this.addMessage = this.addMessage.bind(this);
@@ -107,7 +108,7 @@ export default class App extends React.Component {
 
         <Route path='/teacherSearch'>
           <TeacherSearch
-            value={this.state.studentName}
+            value={this.state.searchStudentName}
             onChange={this.handleStudentName}
             teacher={this.state.teachers}
             teacherID={this.state.teacherID}
@@ -116,7 +117,7 @@ export default class App extends React.Component {
         </Route>
         <Route path='/studentSearch'>
           <StudentSearch
-            value={this.state.teacherName}
+            value={this.state.searchTeacherName}
             onChange={this.handleTeacherName}
             student={this.state.students}
             studentID = {this.state.studentID}
@@ -166,7 +167,7 @@ export default class App extends React.Component {
           />
         </Route>
         <Route path='/chatFormForTeacher'>
-          <ChatFormForTeacher
+         <ChatFormForTeacher
             database={this.state.messages}
             onSubmit={this.addMessage}
             studentID={this.state.studentID}
