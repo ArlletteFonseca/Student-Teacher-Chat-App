@@ -14,6 +14,8 @@ const socketio = require('socket.io');
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
+const PORT = process.env.PORT || 3001;
+
 app.use(express.json());
 
 //  Run when client connects
@@ -143,7 +145,7 @@ app.post('/api/messages/', (req, res, next) => {
 // set static folder
 app.use(staticMiddleware);
 
-server.listen(3001, () => {
+server.listen(PORT, () => {
   // eslint-disable-next-line no-console
   console.log('express server listening on port 3001');
 });
