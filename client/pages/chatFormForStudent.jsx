@@ -36,6 +36,7 @@ export default class ChatForm extends React.Component {
       transports: ['websocket']
     };
     io('http://192.168.1.47:3001', connectionOptions);
+
     socket.on('message', message => {
       this.setState(({
         recvMessages: [...this.state.recvMessages, message]
