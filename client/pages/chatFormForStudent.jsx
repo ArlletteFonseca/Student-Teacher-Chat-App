@@ -28,14 +28,6 @@ export default class ChatForm extends React.Component {
 
   componentDidMount() {
     this.getOldMessages();
-    //   const connectionOptions = {
-    //     reconnection: true,
-    //     reconnectionAttempts: 'Infinity',
-    //     timeout: 20000,
-    //     transports: ['websocket']
-    //   };
-    //  io('http://192.168.1.202:3001', connectionOptions);
-
     socket.on('message', message => {
       this.setState(({
         recvMessages: [...this.state.recvMessages, message]
