@@ -6,9 +6,13 @@ const staticMiddleware = require('./static-middleware');
 const pg = require('pg');
 
 const db = new pg.Pool({
-  connectionString: process.env.DATABASE_URL || 'postgres://dev:lfz@localhost/school',
+  connectionString: process.env.DATABASE_URL,
   ssl: { rejectUnauthorized: false }
 });
+// const db = new pg.Pool({
+//   connectionString: process.env.DATABASE_URL || 'postgres://dev:lfz@localhost/school',
+//   ssl: { rejectUnauthorized: false }
+// });
 
 const http = require('http');
 const express = require('express');
