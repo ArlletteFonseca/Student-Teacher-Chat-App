@@ -4,7 +4,7 @@ set client_min_messages to warning;
 -- `drop schema` INSTANTLY ERASES EVERYTHING.
 drop schema "school" cascade;
 
-create schema "school";
+create schema "public";
 
 CREATE TABLE "messages" (
   "chatID" serial,
@@ -39,4 +39,3 @@ CREATE TABLE "contacts" (
   "teacherID" serial,
   PRIMARY KEY ("studentID", "teacherID")
 );
-
