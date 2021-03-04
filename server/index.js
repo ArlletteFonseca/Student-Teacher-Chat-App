@@ -4,12 +4,10 @@ require('dotenv/config');
 const staticMiddleware = require('./static-middleware');
 
 const pg = require('pg');
-if (process.env.DATABASE_URL) {
-  pg.defaults.ssl = true;
-}
 
 const db = new pg.Pool({
-  connectionString: process.env.DATABASE_URL || 'postgres://dev:lfz@localhost/school'
+  connectionString: process.env.DATABASE_URL || 'postgres://dev:lfz@localhost/school',
+  ssl: { rejectUnauthorized: false }
 });
 
 const http = require('http');
