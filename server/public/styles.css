@@ -99,6 +99,7 @@ a {
 
 .back {
   text-align: left;
+  margin: 5px;
 }
 
 .searchBtn,
@@ -109,7 +110,7 @@ a {
   border-radius: 2rem;
   height: 45px;
   width: 100px;
-  margin-top: 10px;
+  margin-top: 30px;
   text-decoration: none;
 }
 
@@ -135,6 +136,7 @@ a {
   border-radius: 2rem;
   height: 65%;
   width: 100%;
+  margin-top: 50px;
 }
 
 .inputSearch {
@@ -159,7 +161,7 @@ a {
 }
 
 .card,
-.card-header, {
+.card-header {
   max-width: 250px;
   max-height: 300px;
 }
@@ -237,4 +239,14 @@ a {
 img {
   max-width: 250px;
   max-height: 250px;
+}
+
+.h4 {
+  font-size: 2rem;
+}
+
+.back-arrow {
+  position: fixed;
+  top: 10px;
+  left: 40%;
 }

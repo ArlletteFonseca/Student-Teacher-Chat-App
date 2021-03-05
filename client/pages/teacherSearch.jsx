@@ -30,7 +30,7 @@ export default function teacherSearch(props) {
         </div>
         <div className="row ">
           <div className="col ">
-            <h4 className="">Welcome</h4>
+            <h4 className="h4">Welcome</h4>
             <h5 className="m-3" >Help a Student!</h5>
           </div>
         </div>
