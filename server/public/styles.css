@@ -20,8 +20,10 @@ a {
 /* App logo */
 .logo {
   /* font-size: 3rem; */
-  height: 290px;
-  width: 350px;
+  min-width: 400px;
+  max-height: 300px;
+  text-align: center;
+  margin-top: 10px;
 }
 
 /* app heading */
@@ -137,7 +139,7 @@ a {
   font-size: 1.4rem;
   border-radius: 2rem;
   height: 65%;
-  width: 100%;
+  width: 95%;
   margin-top: 10px;
 }
 
