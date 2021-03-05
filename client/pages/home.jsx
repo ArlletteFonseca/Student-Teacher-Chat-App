@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 export default function home(props) {
   return (
     <div className="container-fluid my-container d-flex flex-column justify-content-center align-items-center ">
-      <div className="row w-90">
-        <div className="col">
+      <div className="row ">
+        <div className="col d-flex align-items-center justify-content-center">
            <img src='img/chatbox4.jpg' alt="chatbox logo" className="logo"/>
         </div>
       </div>

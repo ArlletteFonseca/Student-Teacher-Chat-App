@@ -10,6 +10,7 @@ CREATE TABLE "messages" (
   "chatID" serial,
   "studentID" serial,
   "teacherID" serial,
+  "message" serial,
   PRIMARY KEY ("chatID")
 );
 
