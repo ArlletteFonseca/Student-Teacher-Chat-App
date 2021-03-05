@@ -95,9 +95,9 @@ app.get('/api/messages/:studentID/:teacherID', (req, res, next) => {
                       "s"."lastName" as "studentLastName",
                       "t"."teacherID",
                       "s"."studentID",
-                      "m"."message",
-                      "m"."sender"
-               From "messages" as "m"
+                      "messages"."message",
+                      "messages"."sender"
+               From "messages" as "messages"
                JOIN "student" as "s" using ("studentID")
                JOIN "teacher" as "t" using ("teacherID")
                Where "teacherID" = $1 and "studentID"= $2`;
