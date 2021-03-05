@@ -27,6 +27,7 @@ a {
 .heading {
   height: 55px;
   font-size: 1.4rem;
+  margin-bottom: 10px;
 }
 
 /* Router link buttons */
@@ -247,6 +248,5 @@ img {
 
 .back-arrow {
   position: fixed;
-  top: 10px;
-  left: 40%;
+  top: 100px;
 }
