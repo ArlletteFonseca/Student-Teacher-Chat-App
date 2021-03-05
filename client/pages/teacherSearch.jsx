@@ -25,7 +25,7 @@ export default function teacherSearch(props) {
       <div className="container-fluid my-container d-flex flex-column justify-content-center align-items-center ">
         <div className="row">
           <div className="col">
-            <img src='img/chatboxLogo.jpg' alt="chatbox logo" className="logo"/>
+            <img src='img/chatbox3.jpg' alt="chatbox logo" className="logo"/>
           </div>
         </div>
         <div className="row ">
