@@ -158,9 +158,11 @@ a {
   height: 200px;
 }
 
-.card {
-  max-width: 350px;
-  max-height: 400px;
+.card,
+.card-header,
+img {
+  max-width: 250px;
+  max-height: 300px;
 }
 
 .listWidth {
@@ -209,10 +211,6 @@ a {
   position: absolute;
   overflow-y: scroll;
   max-height: 100vh;
-}
-
-.img {
-  height: 300px;
 }
 
 .messagesBody {
