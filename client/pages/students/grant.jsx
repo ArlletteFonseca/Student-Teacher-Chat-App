@@ -19,12 +19,13 @@ export default function brown(props) {
             <img src='img/joshgrant2.jpeg' alt="Student Michael Brown" />
           </div>
         </div>
-      </div>
-      <div className="card-body text-center">
+         <div className="card-body text-center">
         <h5 className="card-title">Josh Grant</h5>
         <p className="card-text">Senior</p>
-        <button className="chatBtn " onClick={toChatScreen}>Start Chat</button>
+        <button className="chatBtn " onClick={toChatScreen}>CHAT</button>
       </div>
+      </div>
+
     </div>
   );
 }

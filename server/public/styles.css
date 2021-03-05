@@ -159,8 +159,7 @@ a {
 }
 
 .card,
-.card-header,
-img {
+.card-header, {
   max-width: 250px;
   max-height: 300px;
 }
@@ -233,4 +232,9 @@ img {
 
 .form-width {
   width: 385px;
+}
+
+img {
+  max-width: 250px;
+  max-height: 250px;
 }

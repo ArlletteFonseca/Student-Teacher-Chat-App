@@ -13,18 +13,19 @@ export default function brown(props) {
   return (
     <div className="container-fluid cardContainer d-flex flex-column justify-content-center">
       <Link to='./studentSearch'><i className="fas fa-chevron-left fa-2x back"></i></Link>
-      <div className="card cardContainer text-center d-flex flex-column justify-content-around">
+      <div className="card cardContainer text-center d-flex flex-column justify-content-around align-items-center">
         <div className="card-header">
           <div className="card">
             <img src='img/brantdiapaola.jpeg' alt="Teacher Dr. Brant Diapaola" className="img" />
           </div>
         </div>
-      </div>
-      <div className="card-body text-center">
+        <div className="card-body text-center">
         <h5 className="card-title">Dr. Brant Diapaola</h5>
         <p className="card-text">Algebra</p>
-        <button className="chatBtn " onClick={toChatScreen}>Start Chat</button>
+        <button className="chatBtn " onClick={toChatScreen}>CHAT</button>
       </div>
+      </div>
+
     </div>
   );
 }
