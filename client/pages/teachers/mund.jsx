@@ -16,7 +16,7 @@ export default function brown(props) {
       <div className="card cardContainer text-center d-flex flex-column justify-content-around align-items-center">
         <div className="card-header">
           <div className="card">
-            <img src='img/darlenemund.jpeg' alt="Teacher Darlene Mund" />
+            <img src='img/darlenemund.jpeg' className="img" alt="Teacher Darlene Mund" />
           </div>
         </div>
         <div className="card-body text-center">

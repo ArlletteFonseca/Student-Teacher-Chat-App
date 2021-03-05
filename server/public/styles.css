@@ -19,8 +19,9 @@ a {
 
 /* App logo */
 .logo {
-  font-size: 3rem;
-  height: 190px;
+  /* font-size: 3rem; */
+  height: 350px;
+  width: 400px;
 }
 
 /* app heading */
@@ -237,7 +238,7 @@ a {
   width: 385px;
 }
 
-img {
+.img {
   max-width: 250px;
   max-height: 250px;
 }

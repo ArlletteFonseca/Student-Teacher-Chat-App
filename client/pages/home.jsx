@@ -6,7 +6,7 @@ export default function home(props) {
     <div className="container-fluid my-container d-flex flex-column justify-content-center align-items-center ">
       <div className="row w-90">
         <div className="col">
-          <h1 className="logo">CHAT BOX</h1>
+           <img src='img/chatboxLogo.jpg' alt="chatbox logo" className="logo"/>
         </div>
       </div>
       <div className="row ">
