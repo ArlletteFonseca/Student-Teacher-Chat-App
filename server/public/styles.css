@@ -250,8 +250,9 @@ a {
 /* App logo */
 .logo {
   /* font-size: 3rem; */
-  height: 100px;
-  width: 350px;
+
+  max-height: 400px;
+  max-width: 100%;
 }
 
 .logo-img {
