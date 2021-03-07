@@ -82,11 +82,13 @@ export default class ChatForm extends React.Component {
 
     return (
       <div >
-        <Link to='./studentSearch' className="arrowWidth"><i className="fas fa-chevron-left fa-2x back arrowWidth"></i></Link>
+        <Link to='./studentSearch' className=""><i className="fas fa-chevron-left fa-2x "></i></Link>
         <div className="container-fluid my-container d-flex flex-column align-items-center chatScreen" >
           {listMessages}
           {textOfRecvMessages}
-          <form onSubmit={this.handleSubmit} className="form fixed gray form-width " method="post">
+
+        </div>
+        <form onSubmit={this.handleSubmit} className="form gray form-width " method="post">
             <input
               id="input"
               className="chatInput"
@@ -94,7 +96,6 @@ export default class ChatForm extends React.Component {
             />
             <button className="btn-success">Send</button>
           </form>
-        </div>
       </div>
 
     );

@@ -96,7 +96,8 @@ a {
 
 .back {
   text-align: left;
-  margin: 5px;
+  margin-bottom: 20px;
+  margin-top: 10px;
 }
 
 .searchBtn,
@@ -159,8 +160,10 @@ a {
 
 .card,
 .card-header {
-  max-width: 250px;
-  max-height: 300px;
+  /* width: 300px;
+ height: 250px; */
+  max-width: 100%;
+  height: auto;
 }
 
 .listWidth {
@@ -187,8 +190,7 @@ a {
   border-radius: 2rem;
   margin: 0.25rem;
   border: 1px rgb(231, 224, 224) solid;
-  width: 80%;
-  height: 50px;
+  min-width: 200px;
   font-size: 1.4rem;
 }
 
@@ -196,7 +198,7 @@ a {
   position: fixed;
   bottom: 0;
   z-index: 3000;
-  height: 60px;
+  height: 50px;
 }
 
 .arrowWidth {
@@ -220,7 +222,7 @@ a {
 
 .chatScreen {
   overflow-y: scroll;
-  max-height: 675px;
+  max-height: 680px;
   max-width: 375px;
   border: 1px rgb(233, 228, 228) solid;
 }
@@ -230,27 +232,28 @@ a {
 }
 
 .form-width {
-  width: 385px;
+  max-width: 375px;
+  margin: 0 auto;
 }
 
 .img {
-  max-width: 250px;
-  max-height: 250px;
+  max-width: 100%;
+  height: auto;
 }
 
 .h4 {
   font-size: 2rem;
 }
 
-.back-arrow {
+/* .back-arrow {
   position: fixed;
   top: 100px;
-}
+} */
 
 /* App logo */
 .logo {
   /* font-size: 3rem; */
-
+  margin-left: 15px;
   max-height: 400px;
   max-width: 100%;
 }
@@ -258,4 +261,14 @@ a {
 .logo-img {
   height: 60%;
   width: 100%;
+}
+
+.list {
+  border-radius: 20px;
+  border: rgb(124, 121, 121) solid 1px;
+}
+
+.back-chat {
+  text-align: left;
+  margin-top: 10px;
 }

@@ -68,7 +68,7 @@ export default class ChatForm extends React.Component {
     const listMessages = oldMessages.map((msg, chatID) =>
       <ul key={chatID} className="list-group m-2 listWidth ">
         {msg.sender}
-        <li className="list-group-item d-flex justify-content-between align-items-center">{msg.message}</li>
+        <li className="list list-group-item d-flex justify-content-between align-items-center">{msg.message}</li>
       </ul>
     );
     const textOfRecvMessages = messagesReceived.map((msg, chatID) =>
@@ -79,11 +79,13 @@ export default class ChatForm extends React.Component {
     );
     return (
         <div >
-            <Link to='./teacherSearch' className="arrowWidth"><i className="fas fa-chevron-left fa-2x back arrowWidth"></i></Link>
-      <div className="container-fluid my-container d-flex flex-column align-items-center chatScreen" >
+            <Link to='./teacherSearch' className=" "><i className="fas fa-chevron-left fa-2x  "></i></Link>
+      <div className="container-fluid my-container d-flex flex-column align-items-center chatScreen " >
          {listMessages}
          {textOfRecvMessages}
-          <form onSubmit={this.handleSubmit} className="form fixed gray form-width " method="post">
+
+      </div>
+         <form onSubmit={this.handleSubmit} className="form gray form-width " method="post">
             <input
               id="input"
               className="chatInput"
@@ -91,7 +93,6 @@ export default class ChatForm extends React.Component {
             />
             <button className="btn-success">Send</button>
           </form>
-      </div>
       </div>
 
     );
