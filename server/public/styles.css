@@ -97,7 +97,7 @@ a {
 .back {
   text-align: left;
   margin-bottom: 20px;
-  margin-top: 10px;
+  margin-top: 40px;
 }
 
 .searchBtn,
@@ -180,7 +180,7 @@ a {
   height: 100vh;
   max-width: 400px;
   border: none;
-  margin-top: 100px;
+  margin-top: 40px;
 }
 
 .green {
@@ -223,7 +223,7 @@ a {
 
 .chatScreen {
   overflow-y: scroll;
-  max-height: 680px;
+  max-height: 640px;
   max-width: 375px;
   border: 1px rgb(233, 228, 228) solid;
 }

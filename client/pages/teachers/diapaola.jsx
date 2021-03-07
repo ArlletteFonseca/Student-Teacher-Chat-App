@@ -12,7 +12,7 @@ export default function brown(props) {
 
   return (
     <div className="container-fluid cardContainer d-flex flex-column justify-content-center">
-      <Link to='./studentSearch'><i className="fas fa-chevron-left fa-2x back back-arrow"></i></Link>
+      <Link to='./studentSearch' className="back"><i className="fas fa-chevron-left fa-2x back back-arrow"></i></Link>
       <div className="card cardContainer text-center d-flex flex-column justify-content-around align-items-center">
         <div className="card-header">
           <div className="card">
