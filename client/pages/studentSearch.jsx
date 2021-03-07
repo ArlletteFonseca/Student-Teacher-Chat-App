@@ -54,7 +54,7 @@ export default function teacherSearch(props) {
         <div className="row line-row">
 
         </div>
-        <div className="row  m-2 fixed">
+        <div className="row  m-2 ">
           <div className="col p-0 d-flex align-items-end justify-content-between">
             <div><Link to='./'><i className="fas fa-sign-out-alt fa-2x"></i></Link></div>
             {/* <div><Link to='./messages'><i className="fas fa-envelope fa-2x"></i></Link></div>
