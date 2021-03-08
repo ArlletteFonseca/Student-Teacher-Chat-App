@@ -162,7 +162,7 @@ a {
 .card-header {
   /* width: 300px;
  height: 250px; */
-  max-width: 100%;
+  max-width: 250px;
   height: auto;
 }
 
@@ -192,6 +192,7 @@ a {
   margin: 0.25rem;
   border: 1px rgb(231, 224, 224) solid;
   font-size: 1.4rem;
+  max-width: 400px;
 }
 
 .fixed {

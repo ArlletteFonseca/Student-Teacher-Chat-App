@@ -91,7 +91,7 @@ export default class ChatForm extends React.Component {
           {textOfRecvMessages}
 
         </div>
-        <form onSubmit={this.handleSubmit} className="form gray form-width " method="post">
+        <form onSubmit={this.handleSubmit} className="form gray form-width d-flex align-items-center justify-content-around " method="post">
             <input
               id="input"
               className="chatInput"
