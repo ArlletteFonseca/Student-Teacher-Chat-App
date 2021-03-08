@@ -191,7 +191,7 @@ a {
   border-radius: 2rem;
   margin: 0.25rem;
   border: 1px rgb(231, 224, 224) solid;
-  min-width: 100px;
+  max-width: 300px;
   font-size: 1.4rem;
 }
 
@@ -223,7 +223,7 @@ a {
 
 .chatScreen {
   overflow-y: scroll;
-  max-height: 640px;
+  max-height: 600px;
   max-width: 375px;
   border: 1px rgb(233, 228, 228) solid;
 }
