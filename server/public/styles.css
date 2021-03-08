@@ -273,3 +273,7 @@ a {
   text-align: left;
   margin-top: 10px;
 }
+
+.btn-success {
+  max-width: 50px;
+}
