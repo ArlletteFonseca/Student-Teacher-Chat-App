@@ -56,7 +56,6 @@ export default class App extends React.Component {
     fetch('/api/teacher/')
       .then(res => res.json())
       .then(data => this.setState({ teachers: data }))
-      // .then(data => console.log(data))
       .catch(error => console.error('Error', error));
   }
 

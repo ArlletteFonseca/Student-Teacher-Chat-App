@@ -160,8 +160,6 @@ a {
 
 .card,
 .card-header {
-  /* width: 300px;
- height: 250px; */
   max-width: 350px;
   height: auto;
 }
@@ -246,14 +244,8 @@ a {
   font-size: 2rem;
 }
 
-/* .back-arrow {
-  position: fixed;
-  top: 100px;
-} */
-
 /* App logo */
 .logo {
-  /* font-size: 3rem; */
   margin-left: 15px;
   max-height: 400px;
   max-width: 100%;
