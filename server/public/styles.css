@@ -274,5 +274,6 @@ a {
 }
 
 .btn-success {
-  max-width: 50px;
+  width: 50px;
+  height: 35px;
 }
