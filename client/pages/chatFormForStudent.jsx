@@ -10,9 +10,9 @@ const connectionOptions = {
   transports: ['websocket']
 };
 
-// const socket = io('http://192.168.1.202:3001', connectionOptions);
+const socket = io('http://192.168.1.202:3001', connectionOptions);
 
-const socket = io(connectionOptions);
+// const socket = io(connectionOptions);
 
 export default class ChatForm extends React.Component {
   constructor(props) {
@@ -74,13 +74,13 @@ export default class ChatForm extends React.Component {
     const listMessages = oldMessages.map((msg, chatID) =>
       <ul key={chatID} className="list-group m-2 listWidth ">
         {msg.sender}
-        <li className="list-group-item d-flex justify-content-between align-items-center">{msg.message}</li>
+        <li className="list list-group-item d-flex justify-content-between align-items-center">{msg.message}</li>
       </ul>
     );
     const textOfRecvMessages = messagesReceived.map((msg, chatID) =>
       <ul key={chatID} className="list-group m-2 listWidth ">
         <span>{msg.name}</span>
-        <li className="list-group-item d-flex justify-content-between align-items-center">{msg.message}</li>
+        <li className="list list-group-item d-flex justify-content-between align-items-center">{msg.message}</li>
       </ul>
     );
 

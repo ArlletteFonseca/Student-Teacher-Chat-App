@@ -13,7 +13,7 @@ a {
 }
 
 .my-container {
-  height: 90vh;
+  height: 80vh;
   text-align: center;
 }
 
@@ -192,7 +192,7 @@ a {
   margin: 0.25rem;
   border: 1px rgb(231, 224, 224) solid;
   font-size: 1.4rem;
-  max-width: 200px;
+  max-width: 250px;
 }
 
 .fixed {
@@ -265,8 +265,7 @@ a {
 }
 
 .list {
-  border-radius: 20px;
-  border: rgb(124, 121, 121) solid 1px;
+  border: rgb(124, 121, 121) solid 2px;
 }
 
 .back-chat {
