@@ -92,7 +92,7 @@ export default class ChatForm extends React.Component {
               className="chatInput"
               onChange={this.handleChange}
             />
-            <button className="btn-success">Send</button>
+            <button className="btn-success">SEND</button>
           </form>
       </div>
 
