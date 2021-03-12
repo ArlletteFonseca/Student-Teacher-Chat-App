@@ -16,6 +16,7 @@ import TeacherList from './pages/teacherList';
 import Mund from './pages/teachers/mund';
 import Hosea from './pages/teachers/hosea';
 import Diapaola from './pages/teachers/diapaola';
+import Nouser from './pages/nouser';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -186,6 +187,9 @@ export default class App extends React.Component {
             studentList={this.state.students}
             studentName={this.state.studentName}
           />
+        </Route>
+        <Route path='/nouser'>
+          <Nouser/>
         </Route>
       </div>
     );

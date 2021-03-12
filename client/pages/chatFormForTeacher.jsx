@@ -10,8 +10,8 @@ const connectionOptions = {
   transports: ['websocket']
 };
 
-// const socket = io('http://192.168.1.202:3001', connectionOptions);
-const socket = io(connectionOptions);
+const socket = io('http://192.168.1.202:3001', connectionOptions);
+// const socket = io(connectionOptions);
 
 export default class ChatForm extends React.Component {
   constructor(props) {
@@ -67,34 +67,55 @@ export default class ChatForm extends React.Component {
     const oldMessages = this.state.databaseMessages;
     const messagesReceived = this.state.recvMessages;
     const listMessages = oldMessages.map((msg, chatID) =>
-      <ul key={chatID} className="list-group m-2 listWidth ">
-        {msg.sender}
-        <li className="list list-group-item d-flex justify-content-between align-items-center">{msg.message}</li>
+    <div key={chatID} className="panel-body">
+      <ul className="chat">
+        <li className="left clearfix">
+          <span className="chat-img pull-left">
+            <div className="avatar">{msg.sender[0]}</div>
+          </span>
+          <div className="chat-body clearfix">
+            <div className="header">
+              <strong className="primary-font">{msg.sender}</strong>
+            </div>
+              <p>{msg.message}</p>
+          </div>
+        </li>
       </ul>
+    </div>
     );
     const textOfRecvMessages = messagesReceived.map((msg, chatID) =>
-      <ul key={chatID} className="list-group m-2 listWidth ">
-          <span>{msg.name}</span>
-        <li className="list list-group-item d-flex justify-content-between align-items-center">{msg.message}</li>
+        <div key={chatID} className="panel-body">
+      <ul className="chat">
+        <li className="right clearfix">
+          <span className="chat-img pull-right">
+            <div className="avatar">{msg.name[0]}</div>
+          </span>
+          <div className="chat-body clearfix">
+            <div className="header">
+              <strong className="pull-right primary-font">{msg.name}</strong>
+            </div>
+              <p>{msg.message}</p>
+          </div>
+        </li>
       </ul>
+    </div>
     );
     return (
-        <div >
-            <Link to='./teacherSearch' className=" "><i className="fas fa-chevron-left fa-2x  "></i></Link>
-      <div className="container-fluid my-container d-flex flex-column align-items-center chatScreen " >
+    <div >
+     <Link to='./teacherSearch' className=" "><i className="fas fa-chevron-left fa-2x  "></i></Link>
          {listMessages}
          {textOfRecvMessages}
-
-      </div>
-         <form onSubmit={this.handleSubmit} className="form gray form-width d-flex align-items-center justify-content-center" method="post">
-            <input
-              id="input"
-              className="chatInput"
-              onChange={this.handleChange}
-            />
-            <button className="btn-success">SEND</button>
+     <div className="panel-footer">
+         <form onSubmit={this.handleSubmit}>
+          <div className="input-group">
+            <input id="btn-input" type="text" className="form-control input-sm" placeholder="Type your message here..." onChange={this.handleChange}/>
+            <span className="input-group-btn">
+              <button className="btn btn-warning " id="btn-chat">Send</button>
+            </span>
+           </div>
           </form>
       </div>
+    </div>
 
     );
   }

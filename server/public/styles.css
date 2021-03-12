@@ -64,14 +64,15 @@ a {
 }
 
 /* submit button */
-.btn {
+
+/* .btn {
   height: 60%;
   width: 100%;
   background-color: #d52349;
   color: white;
   font-size: 1.4rem;
   border-radius: 2rem;
-}
+} */
 
 .menu-row {
   height: 40px;
@@ -145,6 +146,7 @@ a {
   font-size: 1.4rem;
   border-radius: 2rem;
   border: 1px rgb(231, 224, 224) solid;
+  padding: 0 20px;
 }
 
 /* student info page */
@@ -191,6 +193,7 @@ a {
   border: 1px rgb(231, 224, 224) solid;
   font-size: 1.4rem;
   max-width: 220px;
+  padding: 0 10px;
 }
 
 .fixed {
@@ -265,8 +268,104 @@ a {
   margin-top: 10px;
 }
 
-.btn-success {
+/* .btn-success {
   width: 50px;
   height: 35px;
   font-size: 10px;
+} */
+
+.noUser {
+  padding: 0 40px;
+}
+
+.sender {
+  width: 500px;
+}
+
+.ulMessages {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  list-style: none;
+  align-items: start;
+}
+
+.liMessages {
+  border: 2px solid black;
+  border-radius: 30px;
+  padding: 5px 10px;
+  background: lightblue;
+}
+
+/* chat area */
+.chat {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat li {
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px dotted #b3a9a9;
+}
+
+.chat li.left .chat-body {
+  margin-left: 30px;
+}
+
+.chat li.right .chat-body {
+  margin-right: 60px;
+}
+
+.chat li .chat-body p {
+  margin: 0;
+  color: #777;
+}
+
+.chat .glyphicon,
+.panel .slidedown .glyphicon {
+  margin-right: 5px;
+}
+
+/* .panel-body
+{
+    overflow-y: scroll;
+    height: 250px;
+} */
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #f5f5f5;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  background-color: #f5f5f5;
+}
+
+::-webkit-scrollbar-thumb {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #555;
+}
+
+.left {
+  display: flex;
+}
+
+.avatar {
+  height: 50px;
+  width: 50px;
+  background: #55c1e6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  color: white;
+}
+
+.fa-chevron-left {
+  padding: 20px 0;
 }

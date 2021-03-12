@@ -6,7 +6,9 @@ export default function teacherSearch(props) {
 
   function handleClick(e) {
     e.preventDefault();
+
     const lowercaseName = props.value.toLowerCase();
+    const studentArr = ['brown', 'michael', 'pattison', 'amy', 'josh', 'grant'];
     if (lowercaseName.includes('brown') || lowercaseName.includes('michael')) {
       const path = './brown';
       history.push(path);
@@ -15,6 +17,9 @@ export default function teacherSearch(props) {
       history.push(path);
     } else if (lowercaseName.includes('josh') || lowercaseName.includes('grant')) {
       const path = './grant';
+      history.push(path);
+    } else if (!studentArr.includes(lowercaseName)) {
+      const path = './nouser';
       history.push(path);
     }
 

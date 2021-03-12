@@ -7,7 +7,6 @@ export default function studentList(props) {
   }
 
   const listStudent = props.onChange.map(student =>
-
     <ul className="list-group m-2 listWidth" key={student.studentID}>
       <li className="list-group-item d-flex justify-content-between align-items-center">
         <span className="badge bg-secondary badge-pill "><Link className=" studentLink" to={'/' + student.lastName} key={student.studentID} onClick={() => handleCLick(student.studentID)}></Link>
