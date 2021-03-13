@@ -33,6 +33,7 @@ a {
   background-color: #d52349;
   color: white;
   font-size: 1.4rem;
+  font-weight: 200;
   border-radius: 2rem;
   height: 60%;
   width: 100%;
@@ -54,6 +55,7 @@ a {
   width: 100%;
   height: 60%;
   font-size: 1.4rem;
+  font-weight: 200;
 }
 
 .link-row,
@@ -64,15 +66,15 @@ a {
 }
 
 /* submit button */
-
-/* .btn {
+.btnRed {
   height: 60%;
   width: 100%;
   background-color: #d52349;
   color: white;
   font-size: 1.4rem;
+  font-weight: 200;
   border-radius: 2rem;
-} */
+}
 
 .menu-row {
   height: 40px;
@@ -106,6 +108,8 @@ a {
   background-color: #d52349;
   color: white;
   font-size: 1rem;
+  font-weight: 200;
+  border: none;
   border-radius: 2rem;
   height: 45px;
   width: 100px;
@@ -132,6 +136,7 @@ a {
   background-color: #d52349;
   color: white;
   font-size: 1.4rem;
+  font-weight: 200;
   border-radius: 2rem;
   height: 65%;
   width: 100%;
@@ -144,6 +149,7 @@ a {
   height: 90%;
   color: black;
   font-size: 1.4rem;
+  font-weight: 200;
   border-radius: 2rem;
   border: 1px rgb(231, 224, 224) solid;
   padding: 0 20px;
@@ -168,7 +174,6 @@ a {
 
 .listWidth {
   max-width: 500px;
-  width: 300px;
 }
 
 .chatLink {
@@ -282,38 +287,24 @@ a {
   width: 500px;
 }
 
-.ulMessages {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  list-style: none;
-  align-items: start;
-}
 
-.liMessages {
-  border: 2px solid black;
-  border-radius: 30px;
-  padding: 5px 10px;
-  background: lightblue;
-}
 
 /* chat area */
 .chat {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: flex;
-  flex-direction: column;
 }
 
 .chat li {
   margin-bottom: 10px;
   padding-bottom: 5px;
   border-bottom: 1px dotted #b3a9a9;
+  display: flex;
 }
 
 .chat li.left .chat-body {
-  margin-left: 30px;
+  margin-left: 20px;
 }
 
 .chat li.right .chat-body {
@@ -330,11 +321,10 @@ a {
   margin-right: 5px;
 }
 
-/* .panel-body
-{
-    overflow-y: scroll;
-    height: 250px;
-} */
+.panel-body {
+  overflow-y: scroll;
+  height: 250px;
+}
 
 ::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
@@ -351,9 +341,9 @@ a {
   background-color: #555;
 }
 
-.left {
+/* .left {
   display: flex;
-}
+} */
 
 .avatar {
   height: 50px;

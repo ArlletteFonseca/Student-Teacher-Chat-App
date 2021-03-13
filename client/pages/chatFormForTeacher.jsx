@@ -67,38 +67,38 @@ export default class ChatForm extends React.Component {
     const oldMessages = this.state.databaseMessages;
     const messagesReceived = this.state.recvMessages;
     const listMessages = oldMessages.map((msg, chatID) =>
-    <div key={chatID} className="panel-body">
-      <ul className="chat">
+
+      <ul key={chatID} className="chat">
         <li className="left clearfix">
           <span className="chat-img pull-left">
-            <div className="avatar">{msg.sender[0]}</div>
+            <p className="avatar">{msg.sender[0]}</p>
           </span>
           <div className="chat-body clearfix">
             <div className="header">
-              <strong className="primary-font">{msg.sender}</strong>
+              <strong className="primary-font ">{msg.sender}</strong>
             </div>
               <p>{msg.message}</p>
           </div>
         </li>
       </ul>
-    </div>
+
     );
     const textOfRecvMessages = messagesReceived.map((msg, chatID) =>
-        <div key={chatID} className="panel-body">
-      <ul className="chat">
-        <li className="right clearfix">
-          <span className="chat-img pull-right">
-            <div className="avatar">{msg.name[0]}</div>
+
+    <ul key={chatID} className="chat">
+        <li className="left clearfix">
+          <span className="chat-img pull-left">
+           <p className="avatar">{msg.name[0]}</p>
           </span>
           <div className="chat-body clearfix">
             <div className="header">
-              <strong className="pull-right primary-font">{msg.name}</strong>
+              <strong className="primary-font ">{msg.name}</strong>
             </div>
               <p>{msg.message}</p>
           </div>
         </li>
       </ul>
-    </div>
+
     );
     return (
     <div >

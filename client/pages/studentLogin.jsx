@@ -35,7 +35,7 @@ export default function teacherLogin(props) {
         </div>
         <div className="row submit-row">
           <div className="col ">
-            <button type="submit" className="btn">Login</button>
+            <button type="submit" className="btn btnRed">Login</button>
           </div>
         </div>
       </form>

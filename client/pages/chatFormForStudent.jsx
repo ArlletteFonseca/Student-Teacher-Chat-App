@@ -70,37 +70,57 @@ export default class ChatForm extends React.Component {
   render() {
     const oldMessages = this.state.databaseMessages;
     const messagesReceived = this.state.recvMessages;
-
     const listMessages = oldMessages.map((msg, chatID) =>
-      <ul key={chatID} className="list-group m-2 listWidth ">
-        {msg.sender}
-        <li className="list list-group-item d-flex justify-content-between align-items-center">{msg.message}</li>
+
+      <ul key={chatID} className="chat">
+        <li className="left clearfix">
+          <span className="chat-img pull-left">
+            <p className="avatar">{msg.sender[0]}</p>
+          </span>
+          <div className="chat-body clearfix">
+            <div className="header">
+              <strong className="primary-font ">{msg.sender}</strong>
+            </div>
+              <p>{msg.message}</p>
+          </div>
+        </li>
       </ul>
+
     );
     const textOfRecvMessages = messagesReceived.map((msg, chatID) =>
-      <ul key={chatID} className="list-group m-2 listWidth ">
-        <span>{msg.name}</span>
-        <li className="list list-group-item d-flex justify-content-between align-items-center">{msg.message}</li>
+
+    <ul key={chatID} className="chat">
+        <li className="left clearfix">
+          <span className="chat-img pull-left">
+           <p className="avatar">{msg.name[0]}</p>
+          </span>
+          <div className="chat-body clearfix">
+            <div className="header">
+              <strong className="primary-font ">{msg.name}</strong>
+            </div>
+              <p>{msg.message}</p>
+          </div>
+        </li>
       </ul>
+
     );
 
     return (
       <div >
-        <Link to='./studentSearch' className=""><i className="fas fa-chevron-left fa-2x "></i></Link>
-        <div className="container-fluid my-container d-flex flex-column align-items-center chatScreen" >
-          {listMessages}
-          {textOfRecvMessages}
-
-        </div>
-        <form onSubmit={this.handleSubmit} className="form gray form-width d-flex align-items-center justify-content-center " method="post">
-            <input
-              id="input"
-              className="chatInput"
-              onChange={this.handleChange}
-            />
-            <button className="btn-success">SEND</button>
+     <Link to='./teacherSearch' className=" "><i className="fas fa-chevron-left fa-2x  "></i></Link>
+         {listMessages}
+         {textOfRecvMessages}
+     <div className="panel-footer">
+         <form onSubmit={this.handleSubmit}>
+          <div className="input-group">
+            <input id="btn-input" type="text" className="form-control input-sm" placeholder="Type your message here..." onChange={this.handleChange}/>
+            <span className="input-group-btn">
+              <button className="btn btn-warning " id="btn-chat">Send</button>
+            </span>
+           </div>
           </form>
       </div>
+    </div>
 
     );
   }
