@@ -1,5 +1,4 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Megrim&family=RocknRoll+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Krub:ital@1&family=Megrim&display=swap');
 
 
 /* Universal Styling */
@@ -9,7 +8,7 @@
 
 body {
   margin: 30px;
-  font-family: 'RocknRoll One', sans-serif;
+  font-family: 'Krub', sans-serif;
 }
 
 a {
