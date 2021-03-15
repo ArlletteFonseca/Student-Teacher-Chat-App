@@ -10,9 +10,9 @@ const connectionOptions = {
   transports: ['websocket']
 };
 
-// const socket = io('http://192.168.1.202:3001', connectionOptions);
+const socket = io('http://192.168.1.202:3001', connectionOptions);
 
-const socket = io(connectionOptions);
+// const socket = io(connectionOptions);
 
 export default class ChatForm extends React.Component {
   constructor(props) {
@@ -23,7 +23,8 @@ export default class ChatForm extends React.Component {
       messageToSend: '',
       teacherID: props.teacherID,
       studentID: props.studentID,
-      sender: props.studentName
+      sender: props.studentName,
+      avatar: 'blue'
 
     };
     this.handleChange = this.handleChange.bind(this);
@@ -51,7 +52,8 @@ export default class ChatForm extends React.Component {
       message: this.state.messageToSend,
       studentID: this.state.studentID,
       teacherID: this.state.teacherID,
-      sender: this.state.sender
+      sender: this.state.sender,
+      avatar: this.state.avatar
     };
 
     event.preventDefault();
@@ -75,7 +77,7 @@ export default class ChatForm extends React.Component {
       <ul key={chatID} className="chat">
         <li className="left clearfix">
           <span className="chat-img pull-left">
-            <p className="avatar">{msg.sender[0]}</p>
+            <p className={msg.avatar}>{msg.sender[0]}</p>
           </span>
           <div className="chat-body clearfix">
             <div className="header">
@@ -92,7 +94,7 @@ export default class ChatForm extends React.Component {
     <ul key={chatID} className="chat">
         <li className="left clearfix">
           <span className="chat-img pull-left">
-           <p className="avatar">{msg.name[0]}</p>
+           <p className={msg.avatar}>{msg.name[0]}</p>
           </span>
           <div className="chat-body clearfix">
             <div className="header">

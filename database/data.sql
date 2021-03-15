@@ -15,6 +15,3 @@ insert into teacher
    ('Dr. Brant', 'Diapaola', 'Algebra', 'alg', 'drBrant@college.edu'),
    ('Darlene', 'Mund', 'Geometry','geo', 'darlene@college.edu'),
    ('Jack', 'Hosea', 'English', 'eng', 'jack@college.edu');
-
-
-

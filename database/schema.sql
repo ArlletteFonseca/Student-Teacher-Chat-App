@@ -12,6 +12,7 @@ CREATE TABLE "messages" (
   "teacherID" serial,
   "message" text,
   "sender" text,
+  "avatar" text,
   PRIMARY KEY ("chatID")
 );
 
