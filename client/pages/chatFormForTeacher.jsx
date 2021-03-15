@@ -10,8 +10,8 @@ const connectionOptions = {
   transports: ['websocket']
 };
 
-// const socket = io('http://192.168.1.202:3001', connectionOptions);
-const socket = io(connectionOptions);
+const socket = io('http://192.168.1.202:3001', connectionOptions);
+// const socket = io(connectionOptions);
 
 export default class ChatForm extends React.Component {
   constructor(props) {
@@ -101,13 +101,13 @@ export default class ChatForm extends React.Component {
 
     );
     return (
-    <div >
+    <div>
      <Link to='./teacherSearch' className=" "><i className="fas fa-chevron-left fa-2x  "></i></Link>
          {listMessages}
          {textOfRecvMessages}
      <div className="panel-footer">
          <form onSubmit={this.handleSubmit}>
-          <div className="input-group">
+          <div className="input-group ">
             <input id="btn-input" type="text" className="form-control input-sm" placeholder="Type your message here..." onChange={this.handleChange}/>
             <span className="input-group-btn">
               <button className="btn btn-warning " id="btn-chat">Send</button>

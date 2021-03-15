@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap');
 
 /* Universal Styling */
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 30px;
   font-family: 'RocknRoll One', sans-serif;
@@ -357,4 +361,10 @@ a {
 
 .fa-chevron-left {
   padding: 20px 0;
+}
+
+@media (max-width: 480px) {
+  .logo {
+    height: 500px;
+  }
 }
