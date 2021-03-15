@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 
 export default function home(props) {
   return (
-    <div className="container-fluid my-container d-flex flex-column justify-content-center align-items-center ">
+    <div className="container-fluid my-container d-flex flex-column justify-content-center  align-items-center">
       <div className="row ">
         <div className="col ">
-           <img src='img/chatbox4.jpg' alt="chatbox logo" className="logo" />
+           <h1 className="logo">CHATBOX</h1>
         </div>
       </div>
       <div className="row ">
