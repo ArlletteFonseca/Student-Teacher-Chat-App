@@ -9,7 +9,7 @@ export default function studentList(props) {
   const listStudent = props.onChange.map(student =>
     <ul className="list-group m-2 " key={student.studentID}>
       <li className="list-group-item d-flex justify-content-between align-items-center">
-        <span className="badge bg-secondary badge-pill "><Link className=" studentLink" to={'/' + student.lastName} key={student.studentID} onClick={() => handleCLick(student.studentID)}></Link>
+        <span className="badge  badge-pill "><Link className=" studentLink" to={'/' + student.lastName} key={student.studentID} onClick={() => handleCLick(student.studentID)}></Link>
         </span>
         <div className="d-flex justify-content-around align-items-center">
           <span className="name">{student.firstName}</span> <span className="name">{student.lastName}</span>
@@ -24,7 +24,7 @@ export default function studentList(props) {
 
   return (
     <div className="container-fluid ">
-      <Link to='./teacherSearch' className="arrowWidth"><i className="fas fa-chevron-left fa-2x back arrowWidth"></i></Link>
+      <Link to='./teacherSearch' className="arrowWidth"><i className="fas fa-chevron-left fa-2x "></i></Link>
       <p className="m-2 arrowWidth">Select Student</p>
         {listStudent}
     </div>

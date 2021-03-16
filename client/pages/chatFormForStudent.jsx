@@ -109,7 +109,7 @@ export default class ChatForm extends React.Component {
 
     return (
       <div >
-     <Link to='./teacherSearch' className=" "><i className="fas fa-chevron-left fa-2x  "></i></Link>
+     <Link to='./studentSearch' className=" "><i className="fas fa-chevron-left fa-2x  "></i></Link>
          {listMessages}
          {textOfRecvMessages}
      <div className="panel-footer">

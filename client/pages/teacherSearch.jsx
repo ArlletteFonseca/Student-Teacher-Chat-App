@@ -19,7 +19,7 @@ export default function teacherSearch(props) {
       const path = './grant';
       history.push(path);
     } else if (!studentArr.includes(lowercaseName)) {
-      const path = './nouser';
+      const path = './nouserTeacher';
       history.push(path);
     }
 

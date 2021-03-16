@@ -96,7 +96,8 @@ app.get('/api/messages/:studentID/:teacherID', (req, res, next) => {
                       "t"."teacherID",
                       "s"."studentID",
                       "messages"."message",
-                      "messages"."sender"
+                      "messages"."sender",
+                      "messages"."avatar"
                From "messages" as "messages"
                JOIN "student" as "s" using ("studentID")
                JOIN "teacher" as "t" using ("teacherID")
@@ -125,9 +126,9 @@ app.get('/api/messages/:studentID/:teacherID', (req, res, next) => {
 // posting messages
 app.post('/api/messages/', (req, res, next) => {
 
-  const text = `INSERT INTO "messages" ("message", "teacherID", "studentID", "sender")
-                    VALUES($1, $2, $3, $4)`;
-  const values = [req.body.message, req.body.teacherID, req.body.studentID, req.body.sender];
+  const text = `INSERT INTO "messages" ("message", "teacherID", "studentID", "sender","avatar")
+                    VALUES($1, $2, $3, $4, $5)`;
+  const values = [req.body.message, req.body.teacherID, req.body.studentID, req.body.sender, req.body.avatar];
   db.query(text, values)
     .then(result => {
       const message = result.rows;

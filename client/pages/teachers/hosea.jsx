@@ -12,11 +12,11 @@ export default function brown(props) {
 
   return (
     <div className="container-fluid cardContainer d-flex flex-column justify-content-center">
-      <Link to='./techerList' className="back"><i className="fas fa-chevron-left fa-2x back back-arrow"></i></Link>
+      <Link to='./teacherList' className="back"><i className="fas fa-chevron-left fa-2x back back-arrow"></i></Link>
       <div className="card cardContainer text-center d-flex flex-column justify-content-around align-items-center">
         <div className="card-header">
           <div className="card img">
-            <img src='img/jackhosea.jpeg' alt="Teacher Jack Hosea" className="img" />
+            <img src='img/jackhosea.jpeg' alt="Teacher Jack Hosea" className="teacherImg" />
           </div>
         </div>
         <div className="card-body text-center">

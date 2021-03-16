@@ -10,7 +10,7 @@ export default function studentList(props) {
 
     <ul className="list-group m-2 " key={teacher.teacherID}>
       <li className="list-group-item d-flex justify-content-between align-items-center">
-        <span className="badge bg-secondary badge-pill "><Link className=" studentLink" to={'/' + teacher.lastName} key={teacher.teacherID} onClick={() => handleCLick(teacher.teacherID)}></Link>
+        <span className="badge badge-pill "><Link className=" teacherLink" to={'/' + teacher.lastName} key={teacher.teacherID} onClick={() => handleCLick(teacher.teacherID)}></Link>
         </span>
         <div className="d-flex justify-content-around align-items-center">
           <span className="name">{teacher.firstName}</span> <span className="name">{teacher.lastName}</span>
@@ -25,7 +25,7 @@ export default function studentList(props) {
 
   return (
     <div className="container-fluid ">
-      <Link to='./teacherSearch' className="arrowWidth"><i className="fas fa-chevron-left fa-2x back arrowWidth"></i></Link>
+      <Link to='./studentSearch' className="arrowWidth"><i className="fas fa-chevron-left fa-2x "></i></Link>
       <p className="m-2 arrowWidth">Select Teacher</p>
       {listTeacher}
     </div>
