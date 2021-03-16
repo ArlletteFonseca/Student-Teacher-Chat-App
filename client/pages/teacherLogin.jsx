@@ -25,12 +25,12 @@ export default function teacherLogin(props) {
       <form onSubmit={handleSubmit} className=" justify-content-center align-items-center">
         <div className="row  form-group input-row">
           <div className="col">
-            <input type="text" placeholder="Enter email" className="input" required/>
+            <input type="text" placeholder="Enter email" className="input" />
         </div>
           </div>
           <div className="row form-group input-row">
             <div className="col ">
-              <input type="text" placeholder="Enter password" className="input" required/>
+              <input type="text" placeholder="Enter password" className="input" />
         </div>
             </div>
             <div className="row submit-row">
