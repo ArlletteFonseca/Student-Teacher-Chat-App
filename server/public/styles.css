@@ -365,6 +365,7 @@ a {
   align-items: center;
   font-size: 1.5rem;
   color: white;
+  border-radius: 10px;
 }
 
 .fa-chevron-left {
@@ -380,6 +381,7 @@ a {
   align-items: center;
   font-size: 1.5rem;
   color: white;
+  border-radius: 10px;
 }
 
 @media (max-width: 500px) {
