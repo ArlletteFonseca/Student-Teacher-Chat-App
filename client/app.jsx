@@ -39,6 +39,7 @@ export default class App extends React.Component {
     this.handleTeacherName = this.handleTeacherName.bind(this);
     this.handleStudentID = this.handleStudentID.bind(this);
     this.handleTeacherID = this.handleTeacherID.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
   }
 
   componentDidMount() {
@@ -94,10 +95,14 @@ export default class App extends React.Component {
       .catch(error => console.error('Error', error));
   }
 
+  handleLogout() {
+    this.setState({ studentID: 3, teacherID: 2 });
+  }
+
   render() {
     return (
       <div>
-        <Route exact path='/'>
+        <Route exact path='/' demo={this.handleLogout}>
           <Home />
         </Route>
         <Route path='/teacherLogin'>
@@ -113,6 +118,7 @@ export default class App extends React.Component {
             onChange={this.handleStudentName}
             teacher={this.state.teachers}
             teacherID={this.state.teacherID}
+            onClick={this.handleLogout}
 
           />
         </Route>
@@ -122,6 +128,7 @@ export default class App extends React.Component {
             onChange={this.handleTeacherName}
             student={this.state.students}
             studentID = {this.state.studentID}
+            onClick={this.handleLogout}
 
           />
         </Route>

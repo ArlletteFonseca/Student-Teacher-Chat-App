@@ -24,8 +24,8 @@ export default function studentList(props) {
 
   return (
     <div className="container-fluid ">
-      <Link to='./teacherSearch' className="arrowWidth"><i className="fas fa-chevron-left fa-2x "></i></Link>
-      <p className="m-2 arrowWidth">Select Student</p>
+      <Link to='./teacherSearch' className="arrowWidth "><i className="fas fa-chevron-left fa-2x "></i></Link>
+      <p className="m-2 arrowWidth arrowP">Select Student</p>
         {listStudent}
     </div>
   );
