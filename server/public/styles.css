@@ -49,7 +49,7 @@ a {
 }
 
 .studentLink {
-  width: 30px;
+  width: 80px;
   height: 30px;
   background-color: #55c1e6;
   border-radius: 5px;
@@ -57,12 +57,8 @@ a {
   text-decoration: none;
 }
 
-.studentLink i {
-  color: white;
-}
-
 .teacherLink {
-  width: 30px;
+  width: 80px;
   height: 30px;
   background-color: #f66e57;
   border-radius: 5px;
@@ -124,6 +120,7 @@ a {
 .name {
   font-size: 1.3rem;
   margin: 2px;
+  font-weight: 900;
 }
 
 .back {
@@ -132,9 +129,21 @@ a {
   margin-top: 90px;
 }
 
-.searchBtn,
-.chatBtn {
+.searchBtn {
   /* background-color: #d52349; */
+  background-color: black;
+  color: #f9f9f9;
+  font-size: 1rem;
+  font-weight: 200;
+  border: none;
+  border-radius: 2rem;
+  height: 45px;
+  width: 100px;
+  margin-top: 20px;
+  text-decoration: none;
+}
+
+.chatBtn {
   background-color: black;
   color: #f9f9f9;
   font-size: 1rem;
@@ -409,5 +418,9 @@ a {
   .link {
     height: 55px;
     margin: 10px 0;
+  }
+
+  .name {
+    font-size: 1rem;
   }
 }

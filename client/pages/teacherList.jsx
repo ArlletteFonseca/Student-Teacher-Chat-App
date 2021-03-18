@@ -10,7 +10,7 @@ export default function studentList(props) {
 
     <ul className="list-group m-2 " key={teacher.teacherID}>
       <li className="list-group-item d-flex justify-content-between align-items-center">
-        <span className="badge badge-pill "><Link className=" teacherLink" to={'/' + teacher.lastName} key={teacher.teacherID} onClick={() => handleCLick(teacher.teacherID)}><i className="fas fa-user-check fa-lg"></i></Link>
+        <span className="badge badge-pill "><Link className=" teacherLink" to={'/' + teacher.lastName} key={teacher.teacherID} onClick={() => handleCLick(teacher.teacherID)}><p>Open Profile</p></Link>
         </span>
         <div className="d-flex justify-content-around align-items-center">
           <span className="name">{teacher.firstName}</span> <span className="name">{teacher.lastName}</span>
