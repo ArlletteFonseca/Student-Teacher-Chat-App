@@ -22,7 +22,7 @@ export default function brown(props) {
         <div className="card-body text-center">
         <h5 className="card-title">Dr. Brant Diapaola</h5>
         <p className="card-text">Algebra</p>
-        <button className="chatBtn " onClick={toChatScreen}>Chat</button>
+        <button className="chatBtn " onClick={toChatScreen}>Start Chat</button>
       </div>
       </div>
 

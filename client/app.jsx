@@ -119,6 +119,7 @@ export default class App extends React.Component {
             teacher={this.state.teachers}
             teacherID={this.state.teacherID}
             onClick={this.handleLogout}
+            teacherName={this.state.teacherName}
 
           />
         </Route>
@@ -129,6 +130,7 @@ export default class App extends React.Component {
             student={this.state.students}
             studentID = {this.state.studentID}
             onClick={this.handleLogout}
+            studentName={this.state.studentName}
 
           />
         </Route>

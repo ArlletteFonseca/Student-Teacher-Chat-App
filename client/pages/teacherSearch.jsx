@@ -27,7 +27,9 @@ export default function teacherSearch(props) {
 
   return (
     <div>
+       <div className="teacherSignOn"><p>{props.teacherName} <span>|</span> Teacher</p></div>
       <div className="container-fluid my-container d-flex flex-column justify-content-center align-items-center ">
+
         <div className="row">
           <div className="col">
            <h1 className="logo">CHATBOX</h1>
@@ -35,7 +37,7 @@ export default function teacherSearch(props) {
         </div>
         <div className="row ">
           <div className="col ">
-            <h4 className="h4">Welcome</h4>
+            <h4 className="h4">Welcome {props.teacherName}</h4>
             <h5 className="m-3" >Help a Student!</h5>
           </div>
         </div>

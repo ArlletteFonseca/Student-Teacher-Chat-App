@@ -23,6 +23,7 @@ a {
 .my-container {
   height: 80vh;
   text-align: center;
+  margin-top: 70px;
 }
 
 
@@ -52,6 +53,8 @@ a {
   height: 30px;
   background-color: #55c1e6;
   border-radius: 5px;
+  color: white;
+  text-decoration: none;
 }
 
 .teacherLink {
@@ -59,6 +62,8 @@ a {
   height: 30px;
   background-color: #f66e57;
   border-radius: 5px;
+  color: white;
+  text-decoration: none;
 }
 
 /* .label {
@@ -98,10 +103,10 @@ a {
   border-top: 1px solid rgb(209, 204, 204);
 }
 
-.line-row {
+/* .line-row {
   height: 150px;
   border-bottom: 1px solid black;
-}
+} */
 
 /* font awesome */
 .fas {
@@ -269,7 +274,7 @@ a {
 }
 
 .h4 {
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 /* App logo */
@@ -277,9 +282,8 @@ a {
   font-size: 5rem;
   max-width: 100%;
   font-family: 'Megrim', sans-serif;
-  height: 250px;
+  margin-bottom: 50px;
   font-weight: bold;
-  margin-top: 100px;
 }
 
 .logo-img {
@@ -382,6 +386,15 @@ a {
   font-size: 1.5rem;
   color: white;
   border-radius: 10px;
+}
+
+.teacherSignOn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.teacherSignOn span {
+  color: #f66e57;
 }
 
 @media (max-width: 500px) {
