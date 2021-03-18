@@ -57,6 +57,10 @@ a {
   text-decoration: none;
 }
 
+.studentLink i {
+  color: white;
+}
+
 .teacherLink {
   width: 30px;
   height: 30px;
@@ -64,6 +68,10 @@ a {
   border-radius: 5px;
   color: white;
   text-decoration: none;
+}
+
+.teacherLink i {
+  color: white;
 }
 
 /* .label {
