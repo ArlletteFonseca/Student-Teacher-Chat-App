@@ -70,9 +70,6 @@ a {
   color: white;
 }
 
-/* .label {
-  font-size: 1.5rem;
-} */
 
 /* Login page */
 .input {
@@ -107,10 +104,7 @@ a {
   border-top: 1px solid rgb(209, 204, 204);
 }
 
-/* .line-row {
-  height: 150px;
-  border-bottom: 1px solid black;
-} */
+
 
 /* font awesome */
 .fas {
