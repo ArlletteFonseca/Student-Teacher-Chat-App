@@ -40,6 +40,7 @@ export default class App extends React.Component {
     this.handleStudentID = this.handleStudentID.bind(this);
     this.handleTeacherID = this.handleTeacherID.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
+    this.handleResetName = this.handleResetName.bind(this);
   }
 
   componentDidMount() {
@@ -68,6 +69,7 @@ export default class App extends React.Component {
 
   handleTeacherName(event) {
     this.setState({ searchTeacherName: event.target.value });
+
   }
 
   handleStudentID(key) {
@@ -97,6 +99,10 @@ export default class App extends React.Component {
 
   handleLogout() {
     this.setState({ studentID: 3, teacherID: 2 });
+  }
+
+  handleResetName() {
+    this.setState({ searchStudentName: ' ', searchTeacherName: ' ' });
   }
 
   render() {
@@ -149,31 +155,37 @@ export default class App extends React.Component {
         <Route path='/pattison'>
           <Pattison
             onClick={this.handleStudentID}
+            onClickBack= {this.handleResetName}
           />
         </Route>
         <Route path='/brown'>
           <Brown
             onClick={this.handleStudentID}
+            onClickBack= {this.handleResetName}
           />
         </Route>
         <Route path='/grant'>
           <Grant
             onClick={this.handleStudentID}
+            onClickBack= {this.handleResetName}
           />
         </Route>
         <Route path='/mund'>
           <Mund
             onClick={this.handleTeacherID}
+            onClickBack= {this.handleResetName}
           />
         </Route>
         <Route path='/hosea'>
           <Hosea
             onClick={this.handleTeacherID}
+            onClickBack= {this.handleResetName}
           />
         </Route>
         <Route path='/diapaola'>
           <Diapaola
             onClick={this.handleTeacherID}
+            onClickBack= {this.handleResetName}
           />
         </Route>
         <Route path='/chatFormForTeacher'>

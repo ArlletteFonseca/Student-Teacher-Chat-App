@@ -8,6 +8,7 @@ export default function teacherSearch(props) {
     e.preventDefault();
 
     const lowercaseName = props.value.toLowerCase();
+
     const studentArr = ['brown', 'michael', 'pattison', 'amy', 'josh', 'grant'];
     if (lowercaseName.includes('brown') || lowercaseName.includes('michael')) {
       const path = './brown';
