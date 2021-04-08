@@ -230,9 +230,18 @@ a {
 
 .fixed {
   position: fixed;
-  bottom: 0;
+  top: 0;
   z-index: 3000;
   height: 50px;
+}
+
+.fixedSignOn {
+  position: fixed;
+  right: 0;
+  top: 0;
+  background: rgb(226, 225, 225);
+  font-size: 12px;
+  height: 20px;
 }
 
 .arrowWidth {
@@ -331,6 +340,7 @@ a {
   padding-bottom: 5px;
   border-bottom: 1px dotted #b3a9a9;
   display: flex;
+  margin-left: 40px;
 }
 
 .chat li.left .chat-body {

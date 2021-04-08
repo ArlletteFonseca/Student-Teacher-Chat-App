@@ -24,9 +24,12 @@ export default class ChatForm extends React.Component {
       studentID: props.studentID,
       sender: props.teacherName,
       avatar: 'orange'
+
     };
+    this.myRef = React.createRef();
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+
   }
 
   componentDidMount() {
@@ -36,6 +39,10 @@ export default class ChatForm extends React.Component {
         recvMessages: [...this.state.recvMessages, message]
       }));
     });
+  }
+
+  componentDidUpdate() {
+    this.handleScroll();
   }
 
   handleChange(event) {
@@ -65,6 +72,10 @@ export default class ChatForm extends React.Component {
       .catch(error => console.error('Error', error));
   }
 
+  handleScroll() {
+    this.myRef.current.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });
+  }
+
   render() {
     const oldMessages = this.state.databaseMessages;
     const messagesReceived = this.state.recvMessages;
@@ -92,28 +103,31 @@ export default class ChatForm extends React.Component {
           <span className="chat-img pull-left">
            <p className={msg.avatar}>{msg.name[0]}</p>
           </span>
-          <div className="chat-body clearfix">
+          <div className="chat-body clearfix" >
             <div className="header">
               <strong className="primary-font ">{msg.name}</strong>
             </div>
-              <p>{msg.message}</p>
+              <p >{msg.message}</p>
           </div>
         </li>
       </ul>
 
     );
+
     return (
     <div>
-       <div className="teacherSignOn"><p>{this.state.sender} <span>|</span> Teacher</p></div>
-     <Link to='./teacherSearch' className=" "><i className="fas fa-chevron-left fa-2x  "></i></Link>
-         {listMessages}
-         {textOfRecvMessages}
+       <div className=" fixedSignOn"><p>{this.state.sender} <span>|</span> Teacher</p></div>
+     <Link to='./teacherSearch' className="fixed "><i className="fas fa-chevron-left fa-2x  "></i></Link>
+     <div>{listMessages}</div>
+
+         <div >{textOfRecvMessages}</div>
+
      <div className="panel-footer">
          <form onSubmit={this.handleSubmit}>
-          <div className="input-group ">
-            <input id="btn-input" type="text" className="form-control input-sm" placeholder="Type your message here..." onChange={this.handleChange}/>
+          <div className="input-group " >
+            <input id="btn-input" type="text" className="form-control input-sm" placeholder="Type your message here..." onChange={this.handleChange} />
             <span className="input-group-btn">
-              <button className="btn btn-warning " id="btn-chat">Send</button>
+              <button className="btn btn-warning" id="btn-chat" ref={this.myRef}>Send</button>
             </span>
            </div>
           </form>

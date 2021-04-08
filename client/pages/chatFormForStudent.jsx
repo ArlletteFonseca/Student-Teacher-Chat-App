@@ -27,6 +27,7 @@ export default class ChatForm extends React.Component {
       avatar: 'blue'
 
     };
+    this.myRef = React.createRef();
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -39,6 +40,10 @@ export default class ChatForm extends React.Component {
       }));
     });
 
+  }
+
+  componentDidUpdate() {
+    this.handleScroll();
   }
 
   handleChange(event) {
@@ -67,6 +72,10 @@ export default class ChatForm extends React.Component {
       .then(res => res.json())
       .then(data => this.setState({ databaseMessages: data }))
       .catch(error => console.error('Error', error));
+  }
+
+  handleScroll() {
+    this.myRef.current.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });
   }
 
   render() {
@@ -109,8 +118,8 @@ export default class ChatForm extends React.Component {
 
     return (
       <div >
-        <div className="teacherSignOn"><p>{this.state.sender} <span>|</span> Student</p></div>
-     <Link to='./studentSearch' className=" "><i className="fas fa-chevron-left fa-2x  "></i></Link>
+        <div className=" fixedSignOn"><p>{this.state.sender} <span>|</span> Student</p></div>
+     <Link to='./studentSearch' className="fixed "><i className="fas fa-chevron-left fa-2x  "></i></Link>
          {listMessages}
          {textOfRecvMessages}
      <div className="panel-footer">
@@ -118,7 +127,7 @@ export default class ChatForm extends React.Component {
           <div className="input-group">
             <input id="btn-input" type="text" className="form-control input-sm" placeholder="Type your message here..." onChange={this.handleChange}/>
             <span className="input-group-btn">
-              <button className="btn btn-warning " id="btn-chat">Send</button>
+              <button className="btn btn-warning " ref={this.myRef} id="btn-chat">Send</button>
             </span>
            </div>
           </form>
