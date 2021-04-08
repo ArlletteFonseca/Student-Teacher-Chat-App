@@ -234,11 +234,12 @@ a {
   align-items: center;
   position: fixed;
   width: 100%;
-  top: 1%;
+  top: 2%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: rgba(99, 98, 98, 0.5);
   z-index: 1;
+  text-decoration: none;
 }
 
 .fixedSignOn {
@@ -252,6 +253,14 @@ a {
 
 .fixedSignOn span {
   color: #f66e57;
+}
+
+.nameMargin {
+  margin-right: 10px;
+}
+
+.arrowMargin {
+  margin-left: 10px;
 }
 
 .arrowWidth {
@@ -350,7 +359,7 @@ a {
   padding-bottom: 5px;
   border-bottom: 1px dotted #b3a9a9;
   display: flex;
-  margin-left: 40px;
+  margin-left: 20px;
 }
 
 .chat li.left .chat-body {
