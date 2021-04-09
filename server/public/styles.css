@@ -237,7 +237,6 @@ a {
   top: 2%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: rgba(99, 98, 98, 0.5);
   z-index: 1;
   text-decoration: none;
 }

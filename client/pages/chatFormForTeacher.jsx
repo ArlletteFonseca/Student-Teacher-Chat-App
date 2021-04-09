@@ -116,7 +116,7 @@ export default class ChatForm extends React.Component {
 
     return (
     <div>
-       <div className="fixedSignOn"><p className="nameMargin">{this.state.sender} <span>|</span> Teacher</p></div>
+       <div className="teacherSignOn"><p className="nameMargin">{this.state.sender} <span>|</span> Teacher</p></div>
      <Link to='./teacherSearch' className="fixed "><i className="fas fa-chevron-left fa-2x arrowMargin "></i></Link>
      <div>{listMessages}</div>
 
