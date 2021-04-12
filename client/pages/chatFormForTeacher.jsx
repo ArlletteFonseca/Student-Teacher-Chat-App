@@ -33,7 +33,7 @@ export default class ChatForm extends React.Component {
   }
 
   componentDidMount() {
-    this.handleScroll();
+
     this.getOldMessages();
     socket.on('message', message => {
       this.setState(({
@@ -42,9 +42,9 @@ export default class ChatForm extends React.Component {
     });
   }
 
-  // componentDidUpdate() {
-  //   this.handleScroll();
-  // }
+  componentDidUpdate() {
+    this.handleScroll();
+  }
 
   handleChange(event) {
     event.preventDefault();
@@ -74,8 +74,9 @@ export default class ChatForm extends React.Component {
   }
 
   handleScroll() {
-    this.myRef.current.lastElementChild.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'center', alignToTop: false });
-
+    if (this.myRef) {
+      this.myRef.current.lastElementChild.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'center', alignToTop: false });
+    }
   }
 
   render() {
@@ -100,8 +101,8 @@ export default class ChatForm extends React.Component {
 
     );
     const textOfRecvMessages = messagesReceived.map((msg, chatID) =>
-    <div key={chatID} clasName="parent">
-    <ul className="chat">
+
+    <ul className="chat" key={chatID}>
         <li className="left clearfix">
           <span className="chat-img pull-left">
            <p className={msg.avatar}>{msg.name[0]}</p>
@@ -113,7 +114,7 @@ export default class ChatForm extends React.Component {
               <p >{msg.message}</p>
           </div>
         </li>
-      </ul></div>
+      </ul>
 
     );
 

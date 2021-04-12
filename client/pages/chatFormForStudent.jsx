@@ -43,7 +43,7 @@ export default class ChatForm extends React.Component {
   }
 
   componentDidUpdate() {
-    this.handleScroll();
+
   }
 
   handleChange(event) {
