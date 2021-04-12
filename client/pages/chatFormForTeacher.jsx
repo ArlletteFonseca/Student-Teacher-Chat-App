@@ -33,7 +33,7 @@ export default class ChatForm extends React.Component {
   }
 
   componentDidMount() {
-    // this.handleScroll();
+    this.handleScroll();
     this.getOldMessages();
     socket.on('message', message => {
       this.setState(({
@@ -42,9 +42,9 @@ export default class ChatForm extends React.Component {
     });
   }
 
-  componentDidUpdate() {
-    this.handleScroll();
-  }
+  // componentDidUpdate() {
+  //   this.handleScroll();
+  // }
 
   handleChange(event) {
     event.preventDefault();
