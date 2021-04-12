@@ -33,6 +33,7 @@ export default class ChatForm extends React.Component {
   }
 
   componentDidMount() {
+    // this.handleScroll();
     this.getOldMessages();
     socket.on('message', message => {
       this.setState(({
@@ -73,10 +74,12 @@ export default class ChatForm extends React.Component {
   }
 
   handleScroll() {
-    this.myRef.current.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });
+    this.myRef.current.lastElementChild.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'center', alignToTop: false });
+
   }
 
   render() {
+
     const oldMessages = this.state.databaseMessages;
     const messagesReceived = this.state.recvMessages;
     const listMessages = oldMessages.map((msg, chatID) =>
@@ -97,8 +100,8 @@ export default class ChatForm extends React.Component {
 
     );
     const textOfRecvMessages = messagesReceived.map((msg, chatID) =>
-
-    <ul key={chatID} className="chat">
+    <div key={chatID} clasName="parent">
+    <ul className="chat">
         <li className="left clearfix">
           <span className="chat-img pull-left">
            <p className={msg.avatar}>{msg.name[0]}</p>
@@ -110,24 +113,26 @@ export default class ChatForm extends React.Component {
               <p >{msg.message}</p>
           </div>
         </li>
-      </ul>
+      </ul></div>
 
     );
 
     return (
-    <div>
+
+    <div >
        <div className="teacherSignOn"><p className="nameMargin">{this.state.sender} <span>|</span> Teacher</p></div>
      <Link to='./teacherSearch' className="fixed "><i className="fas fa-chevron-left fa-2x arrowMargin "></i></Link>
-     <div>{listMessages}</div>
-
-         <div >{textOfRecvMessages}</div>
+        <div className="parent" ref={this.myRef}>
+          {listMessages}
+          {textOfRecvMessages}
+        </div>
 
      <div className="panel-footer fixed-input">
          <form onSubmit={this.handleSubmit}>
           <div className="input-group " >
             <input id="btn-input" type="text" className="form-control input-sm" placeholder="Type your message here..." onChange={this.handleChange} />
             <span className="input-group-btn">
-              <button className="btn btn-warning" id="btn-chat" ref={this.myRef}>Send</button>
+              <button className="btn btn-warning" id="btn-chat" >Send</button>
             </span>
            </div>
           </form>
