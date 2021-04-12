@@ -436,6 +436,13 @@ a {
   color: #f66e57;
 }
 
+.fixed-input {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+}
+
 @media (max-width: 500px) {
   .link {
     height: 55px;

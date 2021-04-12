@@ -122,7 +122,7 @@ export default class ChatForm extends React.Component {
 
          <div >{textOfRecvMessages}</div>
 
-     <div className="panel-footer">
+     <div className="panel-footer fixed-input">
          <form onSubmit={this.handleSubmit}>
           <div className="input-group " >
             <input id="btn-input" type="text" className="form-control input-sm" placeholder="Type your message here..." onChange={this.handleChange} />
