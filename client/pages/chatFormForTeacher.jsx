@@ -42,9 +42,9 @@ export default class ChatForm extends React.Component {
     });
   }
 
-  componentDidUpdate() {
-    this.handleScroll();
-  }
+  // componentDidUpdate() {
+  //   this.handleScroll();
+  // }
 
   handleChange(event) {
     event.preventDefault();
@@ -73,11 +73,11 @@ export default class ChatForm extends React.Component {
       .catch(error => console.error('Error', error));
   }
 
-  handleScroll() {
-    if (this.myRef) {
-      this.myRef.current.lastElementChild.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'center', alignToTop: false });
-    }
-  }
+  // handleScroll() {
+  //   if (this.myRef) {
+  //     this.myRef.current.lastElementChild.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'center', alignToTop: false });
+  //   }
+  // }
 
   render() {
 
