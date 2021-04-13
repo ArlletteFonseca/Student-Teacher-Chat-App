@@ -33,6 +33,7 @@ export default class ChatForm extends React.Component {
   }
 
   componentDidMount() {
+
     this.getOldMessages();
     socket.on('message', message => {
       this.setState(({
@@ -43,7 +44,9 @@ export default class ChatForm extends React.Component {
   }
 
   componentDidUpdate() {
-
+    if (this.myRef) {
+      this.handleScroll();
+    }
   }
 
   handleChange(event) {
@@ -75,7 +78,7 @@ export default class ChatForm extends React.Component {
   }
 
   handleScroll() {
-    this.myRef.current.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });
+    this.myRef.current.lastElementChild.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'center', bottom: 0 });
   }
 
   render() {
@@ -120,14 +123,16 @@ export default class ChatForm extends React.Component {
       <div >
         <div className=" fixedSignOn"><p>{this.state.sender} <span>|</span> Student</p></div>
      <Link to='./studentSearch' className="fixed "><i className="fas fa-chevron-left fa-2x  "></i></Link>
-         {listMessages}
-         {textOfRecvMessages}
-     <div className="panel-footer">
+          <div className="parent" ref={this.myRef}>
+          {listMessages}
+          {textOfRecvMessages}
+        </div>
+     <div className="panel-footer fixed-input">
          <form onSubmit={this.handleSubmit}>
           <div className="input-group">
             <input id="btn-input" type="text" className="form-control input-sm" placeholder="Type your message here..." onChange={this.handleChange}/>
             <span className="input-group-btn">
-              <button className="btn btn-warning " ref={this.myRef} id="btn-chat">Send</button>
+              <button className="btn btn-warning "id="btn-chat">Send</button>
             </span>
            </div>
           </form>

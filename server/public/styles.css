@@ -453,3 +453,8 @@ a {
     font-size: 1rem;
   }
 }
+
+.parent {
+  overflow-y: auto;
+  height: 100%;
+}

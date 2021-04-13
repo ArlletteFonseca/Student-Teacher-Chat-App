@@ -33,18 +33,20 @@ export default class ChatForm extends React.Component {
   }
 
   componentDidMount() {
-
     this.getOldMessages();
     socket.on('message', message => {
       this.setState(({
         recvMessages: [...this.state.recvMessages, message]
       }));
     });
+
   }
 
-  // componentDidUpdate() {
-  //   this.handleScroll();
-  // }
+  componentDidUpdate() {
+    if (this.myRef) {
+      this.handleScroll();
+    }
+  }
 
   handleChange(event) {
     event.preventDefault();
@@ -71,16 +73,15 @@ export default class ChatForm extends React.Component {
       .then(res => res.json())
       .then(data => this.setState({ databaseMessages: data }))
       .catch(error => console.error('Error', error));
+
   }
 
-  // handleScroll() {
-  //   if (this.myRef) {
-  //     this.myRef.current.lastElementChild.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'center', alignToTop: false });
-  //   }
-  // }
+  handleScroll() {
+    this.myRef.current.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'center', bottom: 0 });
+
+  }
 
   render() {
-
     const oldMessages = this.state.databaseMessages;
     const messagesReceived = this.state.recvMessages;
     const listMessages = oldMessages.map((msg, chatID) =>
@@ -123,9 +124,10 @@ export default class ChatForm extends React.Component {
     <div >
        <div className="teacherSignOn"><p className="nameMargin">{this.state.sender} <span>|</span> Teacher</p></div>
      <Link to='./teacherSearch' className="fixed "><i className="fas fa-chevron-left fa-2x arrowMargin "></i></Link>
-        <div className="parent" ref={this.myRef}>
+        <div className="parent" ref={this.myRef} >
           {listMessages}
           {textOfRecvMessages}
+
         </div>
 
      <div className="panel-footer fixed-input">
