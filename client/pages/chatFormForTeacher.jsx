@@ -33,6 +33,7 @@ export default class ChatForm extends React.Component {
   }
 
   componentDidMount() {
+    this.handleScroll();
     this.getOldMessages();
     socket.on('message', message => {
       this.setState(({
