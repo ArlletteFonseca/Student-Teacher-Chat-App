@@ -448,6 +448,7 @@ a {
   position: fixed;
   bottom: 0;
   width: 100%;
+  left: 0;
 }
 
 @media (max-width: 500px) {
