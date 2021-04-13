@@ -131,10 +131,10 @@ export default class ChatForm extends React.Component {
 
         </div>
 
-     <div className="panel-footer fixed-input">
+     <div className="panel-footer ">
          <form onSubmit={this.handleSubmit}>
           <div className="input-group " >
-            <input id="btn-input" type="text" className="form-control input-sm" placeholder="Type your message here..." onChange={this.handleChange} />
+            <input id="btn-input" type="text" className="form-control input-sm fixed-input" placeholder="Type your message here..." onChange={this.handleChange} />
             <span className="input-group-btn">
               <button className="btn btn-warning" id="btn-chat" >Send</button>
             </span>
