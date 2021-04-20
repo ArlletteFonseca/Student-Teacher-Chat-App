@@ -10,8 +10,8 @@ const connectionOptions = {
   transports: ['websocket']
 };
 
-// const socket = io('http://192.168.1.202:3001', connectionOptions);
-const socket = io(connectionOptions);
+const socket = io('http://192.168.1.202:3001', connectionOptions);
+// const socket = io(connectionOptions);
 
 export default class ChatForm extends React.Component {
   constructor(props) {
@@ -50,9 +50,7 @@ export default class ChatForm extends React.Component {
   }
 
   handleChange(event) {
-    event.preventDefault();
     this.setState({ messageToSend: event.target.value });
-
   }
 
   handleSubmit(event) {
