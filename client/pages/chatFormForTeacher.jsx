@@ -10,8 +10,8 @@ const connectionOptions = {
   transports: ['websocket']
 };
 
-const socket = io('http://192.168.1.202:3001', connectionOptions);
-// const socket = io(connectionOptions);
+// const socket = io('http://192.168.1.202:3001', connectionOptions);
+const socket = io(connectionOptions);
 
 export default class ChatForm extends React.Component {
   constructor(props) {
@@ -23,7 +23,8 @@ export default class ChatForm extends React.Component {
       teacherID: props.teacherID,
       studentID: props.studentID,
       sender: props.teacherName,
-      avatar: 'orange'
+      avatar: 'orange',
+      sent: 'no'
 
     };
     this.myRef = React.createRef();
@@ -50,7 +51,7 @@ export default class ChatForm extends React.Component {
   }
 
   handleChange(event) {
-    this.setState({ messageToSend: event.target.value });
+    this.setState({ messageToSend: event.target.value, sent: 'yes' });
   }
 
   handleSubmit(event) {
@@ -65,6 +66,8 @@ export default class ChatForm extends React.Component {
     socket.emit('chat message', newMessage);
     this.props.onSubmit(newMessage);
     event.target.reset();
+    this.setState({ messageToSend: '' });
+
   }
 
   getOldMessages() {
@@ -134,7 +137,7 @@ export default class ChatForm extends React.Component {
           <div className="input-group " >
             <input id="btn-input" type="text" className="form-control  input-sm " placeholder="Type your message here..." onChange={this.handleChange} />
             <span className="input-group-btn">
-              <button className="btn btn-warning" id="btn-chat" >Send</button>
+              <button className="btn btn-warning" id="btn-chat" disabled={this.state.messageToSend.length < 1} >Send</button>
             </span>
            </div>
           </form>

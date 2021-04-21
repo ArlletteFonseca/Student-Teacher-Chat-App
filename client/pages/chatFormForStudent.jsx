@@ -10,9 +10,9 @@ const connectionOptions = {
   transports: ['websocket']
 };
 
-const socket = io('http://192.168.1.202:3001', connectionOptions);
+// const socket = io('http://192.168.1.202:3001', connectionOptions);
 
-// const socket = io(connectionOptions);
+const socket = io(connectionOptions);
 
 export default class ChatForm extends React.Component {
   constructor(props) {
@@ -67,6 +67,7 @@ export default class ChatForm extends React.Component {
     socket.emit('chat message', newMessage);
     this.props.onSubmit(newMessage);
     event.target.reset();
+    this.setState({ messageToSend: '' });
   }
 
   getOldMessages() {
@@ -77,7 +78,8 @@ export default class ChatForm extends React.Component {
   }
 
   handleScroll() {
-    this.myRef.current.lastElementChild.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'center', bottom: 0 });
+    this.myRef.current.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'center', bottom: 0 });
+
   }
 
   render() {
@@ -121,7 +123,7 @@ export default class ChatForm extends React.Component {
     return (
       <div >
         <div className=" fixedSignOn"><p>{this.state.sender} <span>|</span> Student</p></div>
-     <Link to='./studentSearch' className="fixed "><i className="fas fa-chevron-left fa-2x  "></i></Link>
+     <Link to='./studentSearch' className="fixed "><i className="fas fa-chevron-left fa-2x arrowMargin  "></i></Link>
           <div className="parent" ref={this.myRef}>
           {listMessages}
           {textOfRecvMessages}
@@ -131,7 +133,7 @@ export default class ChatForm extends React.Component {
           <div className="input-group">
             <input id="btn-input" type="text" className="form-control input-sm" placeholder="Type your message here..." onChange={this.handleChange}/>
             <span className="input-group-btn">
-              <button className="btn btn-warning "id="btn-chat">Send</button>
+              <button className="btn btn-warning "id="btn-chat" disabled={this.state.messageToSend.length < 1}>Send</button>
             </span>
            </div>
           </form>
