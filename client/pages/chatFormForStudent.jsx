@@ -128,13 +128,13 @@ export default class ChatForm extends React.Component {
           {listMessages}
           {textOfRecvMessages}
         </div>
-     <div className="panel-footer fixed-input">
-         <form onSubmit={this.handleSubmit}>
-          <div className="input-group">
-            <input id="btn-input" type="text" className="form-control input-sm" placeholder="Type your message here..." onChange={this.handleChange}/>
-            <span className="input-group-btn">
-              <button className="btn btn-warning "id="btn-chat" disabled={this.state.messageToSend.length < 1}>Send</button>
-            </span>
+     <div className="fixed-input ">
+         <form onSubmit={this.handleSubmit} >
+            <div className="input-group " >
+              <input id="btn-input" type="text" className="form-control  input-sm " placeholder="Type your message here..." onChange={this.handleChange} />
+              <span className="input-group-btn">
+                <button className="btn btn-warning" id="btn-chat" disabled={this.state.messageToSend.length < 1} >Send</button>
+              </span>
            </div>
           </form>
       </div>
